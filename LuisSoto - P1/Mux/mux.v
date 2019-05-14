@@ -36,7 +36,7 @@ module mux(
                 else if (valid_in_0_c == 0 && valid_in_1_c == 1) begin
                     data_out_c = data_in_1_c;
                     valid_out_c = 1;
-                    nxt_st = TRANS_0;
+                    nxt_st = TRANS_1;
                 end 
                 else if (valid_in_0_c == 1 && valid_in_1_c == 1) begin
                     data_out_c = data_in_0_c;
