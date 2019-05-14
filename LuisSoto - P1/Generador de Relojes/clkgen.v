@@ -1,11 +1,15 @@
 module clkgen (
     input                   clk,        //En este caso clk es 8f, clks[0] es 4f, 
-    output reg [2:0]        clks);      //clks[1] es 2f y clks[2] es f.
+    output reg              clkf,
+    output reg              clk2f,
+    output reg              clk4f);      //clks[1] es 2f y clks[2] es f.
 
-initial clks <= 0;
+initial clkf <= 'b0;
+initial clk2f <= 'b0;
+initial clk4f <= 'b0;
 
 always @(posedge clk) begin
-    clks <= clks + 1;
+    {clkf, clk2f, clk4f} <= {clkf, clk2f, clk4f} + 1;
 end
 
 endmodule

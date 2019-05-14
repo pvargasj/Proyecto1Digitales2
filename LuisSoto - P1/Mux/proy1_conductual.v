@@ -4,7 +4,6 @@
 module proy1_conductual (
 	output 	[7:0]				data_out_c,
 	output 						valid_out_c,
-	output 	[2:0]				clks,
 	input	[7:0]				data_in_0_c,
 	input	[7:0]				data_in_1_c,
 	output 						valid_in_0_c,
@@ -24,6 +23,6 @@ module proy1_conductual (
 		data_in_1_c, 
 		valid_in_0_c, 
 		valid_in_1_c, 
-		clks[1]);
+		clk2f);
 
 endmodule

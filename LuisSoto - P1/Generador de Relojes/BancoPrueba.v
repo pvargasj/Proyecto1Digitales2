@@ -11,14 +11,17 @@ module BancoPruebas; // Testbench
 	/*AUTOWIRE*/
 	// Beginning of automatic wires (for undeclared instantiated-module outputs)
 	wire		clk;			// From probador_ of probador.v
-	wire [2:0]	clks;			// From p_cond of proy1_conductual.v
+	wire		clk2f;			// From p_cond of proy1_conductual.v
+	wire		clk4f;			// From p_cond of proy1_conductual.v
+	wire		clkf;			// From p_cond of proy1_conductual.v
 	// End of automatics
-
 
 	// Descripción conductual de demux
 	proy1_conductual	p_cond(/*AUTOINST*/
 				       // Outputs
-				       .clks		(clks[2:0]),
+				       .clkf		(clkf),
+				       .clk2f		(clk2f),
+				       .clk4f		(clk4f),
 				       // Inputs
 				       .clk		(clk));
 
@@ -30,6 +33,8 @@ module BancoPruebas; // Testbench
 			   // Outputs
 			   .clk			(clk),
 			   // Inputs
-			   .clks		(clks[2:0]));
+			   .clkf		(clkf),
+			   .clk2f		(clk2f),
+			   .clk4f		(clk4f));
 	
 endmodule

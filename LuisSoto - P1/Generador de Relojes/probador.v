@@ -1,6 +1,8 @@
 //Generador de señales y monitor de datos
 module probador( 	
-	input		[2:0]			clks,
+	input						clkf,
+	input						clk2f,
+	input						clk4f,
 	output reg 					clk);
 
 	
@@ -10,7 +12,7 @@ module probador(
 		
 		$display ("\t\t\tclk,\tclks");	//Mensaje inicial que se imprime en consola
 		
-		$monitor($time,"\t%b\t%b\t\t%b\t\t%b\t%b", clk, clks); //Valores que se imprimen con cada cambio 
+		$monitor($time,"\t%b\t%b\t\t%b\t\t%b\t%b", clk, clkf,clk2f,clk4f); //Valores que se imprimen con cada cambio 
 
 					 					//A continuaci�n, se generan las se�ales de prueba a usar para la simulaci�n	
 
