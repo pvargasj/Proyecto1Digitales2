@@ -4,13 +4,9 @@ module Paralelo_Serie_conductual(input clk_8f,
                       input valid_in,
                       output reg [7:0] data2send_c,
                       output reg data_out_c);
-    reg [3:0] j = 8;
+    reg [2:0] j = 0;
 
     always @(*)begin
-        if(j>8)begin
-            j = 7;
-        end
-
         data_out_c = data2send_c[j];
    end
 
