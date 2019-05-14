@@ -102,6 +102,8 @@ module mux(
                     nxt_st = TRANS_0;
                 end 
             end
+        endcase
+    
     end
 
 endmodule

@@ -1,12 +1,12 @@
 //Generador de señales y monitor de datos
 module probador( 	
 	input		[2:0]			clks,
-	input 		[7:0]			data_out_c;
-	input 	 					valid_out_c;
-	output reg	[7:0]			data_in_0_c;
-	output reg	[7:0]			data_in_1_c;
-	output reg 					valid_in_0_c;
-	output reg 					valid_in_1_c;
+	input 		[7:0]			data_out_c,
+	input 	 					valid_out_c,
+	output reg	[7:0]			data_in_0_c,
+	output reg	[7:0]			data_in_1_c,
+	output reg 					valid_in_0_c,
+	output reg 					valid_in_1_c,
 	output reg 					clk,
 	output reg 					reset);
 
