@@ -10,9 +10,9 @@ module BancoPruebas; // Testbench
 
 	/*AUTOWIRE*/
 	// Beginning of automatic wires (for undeclared instantiated-module outputs)
-	wire		clk;			// From probador_ of probador.v
 	wire		clk2f;			// From p_cond of proy1_conductual.v
 	wire		clk4f;			// From p_cond of proy1_conductual.v
+	wire		clk8f;			// From probador_ of probador.v
 	wire		clkf;			// From p_cond of proy1_conductual.v
 	wire [7:0]	data_in_0_c;		// From probador_ of probador.v
 	wire [7:0]	data_in_1_c;		// From probador_ of probador.v
@@ -38,7 +38,7 @@ module BancoPruebas; // Testbench
 				       .data_in_0_c	(data_in_0_c[7:0]),
 				       .data_in_1_c	(data_in_1_c[7:0]),
 				       .reset		(reset),
-				       .clk		(clk));
+				       .clk8f		(clk8f));
 
 	// Descripción sintetizada de demux
 	//proy1_synth		p_synth(/*AUTOINST*/);
@@ -47,16 +47,16 @@ module BancoPruebas; // Testbench
 	probador probador_(/*AUTOINST*/
 			   // Outputs
 			   .data_in_0_c		(data_in_0_c[7:0]),
-			   .data_in_1_c		(data_in_1_c[7:0]),
 			   .valid_in_0_c	(valid_in_0_c),
+			   .data_in_1_c		(data_in_1_c[7:0]),
 			   .valid_in_1_c	(valid_in_1_c),
-			   .clk			(clk),
 			   .reset		(reset),
+			   .clk8f		(clk8f),
 			   // Inputs
-			   .clkf		(clkf),
-			   .clk2f		(clk2f),
-			   .clk4f		(clk4f),
 			   .data_out_c		(data_out_c[7:0]),
-			   .valid_out_c		(valid_out_c));
+			   .valid_out_c		(valid_out_c),
+			   .clk4f		(clk4f),
+			   .clk2f		(clk2f),
+			   .clkf		(clkf));
 	
 endmodule

@@ -3,7 +3,8 @@ module probador(
 	input						clkf,
 	input						clk2f,
 	input						clk4f,
-	output reg 					clk);
+	output reg 					clk8f,
+	output reg 					reset);
 
 	
 	initial begin
@@ -12,54 +13,54 @@ module probador(
 		
 		$display ("\t\t\tclk,\tclks");	//Mensaje inicial que se imprime en consola
 		
-		$monitor($time,"\t%b\t%b\t\t%b\t\t%b\t%b", clk, clkf,clk2f,clk4f); //Valores que se imprimen con cada cambio 
+		$monitor($time,"\t%b\t%b\t\t%b\t\t%b\t%b", clk8f, clkf, clk2f, clk4f); //Valores que se imprimen con cada cambio 
 
 					 					//A continuaci�n, se generan las se�ales de prueba a usar para la simulaci�n	
+		reset = 0;
+		@(posedge clk8f);
 
-		@(posedge clk);
+		@(posedge clk8f);
+		
+		@(posedge clk8f);
+		reset <= 1;
+		@(posedge clk8f);
+		
+		@(posedge clk8f);
+		
+		@(posedge clk8f);
 
-		@(posedge clk);
+		@(posedge clk8f);
 		
-		@(posedge clk);
+		@(posedge clk8f);
 		
-		@(posedge clk);
+		@(posedge clk8f);
 		
-		@(posedge clk);
+		@(posedge clk8f);
 		
-		@(posedge clk);
+		@(posedge clk8f);
 
-		@(posedge clk);
+		@(posedge clk8f);
 		
-		@(posedge clk);
+		@(posedge clk8f);
 		
-		@(posedge clk);
+		@(posedge clk8f);
 		
-		@(posedge clk);
+		@(posedge clk8f);
 		
-		@(posedge clk);
+		@(posedge clk8f);
 
-		@(posedge clk);
+		@(posedge clk8f);
 		
-		@(posedge clk);
+		@(posedge clk8f);
+		reset <= 0;
+		@(posedge clk8f);
 		
-		@(posedge clk);
-		
-		@(posedge clk);
-		
-		@(posedge clk);
-
-		@(posedge clk);
-		
-		@(posedge clk);
-		
-		@(posedge clk);
-		
-		@(posedge clk);
+		@(posedge clk8f);
 		
 		$finish;						// Termina de almacenar se�ales
 	end
 	// Reloj
-	initial	clk 	<= 0;				// Valor inicial al reloj, sino siempre ser� indeterminado
-	always	#45 clk 	<= ~clk;		// Hace "toggle" cada 2*10ns
+	initial	clk8f 	<= 0;				// Valor inicial al reloj, sino siempre ser� indeterminado
+	always	#45 clk8f 	<= ~clk8f;		// Hace "toggle" cada 2*10ns
 	
 endmodule
