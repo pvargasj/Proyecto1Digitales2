@@ -38,6 +38,7 @@ module probador(
 		@(posedge clk);
 		data_in_0_c = 'h12;
 		data_in_1_c = 'hFE;
+		reset <= 1; 
 		@(posedge clk);
 		data_in_0_c = 'h12;
 		data_in_1_c = 'hFE;

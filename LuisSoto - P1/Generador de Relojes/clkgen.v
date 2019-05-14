@@ -8,8 +8,20 @@ initial clkf <= 'b0;
 initial clk2f <= 'b0;
 initial clk4f <= 'b0;
 
-always @(posedge clk) begin
+/*always @(posedge clk) begin
     {clkf, clk2f, clk4f} <= {clkf, clk2f, clk4f} + 1;
+end*/
+
+always @(posedge clk) begin
+    clk4f <= ~clk4f;
+end
+
+always @(posedge clk4f) begin
+    clk2f <= ~clk2f;
+end
+
+always @(posedge clk2f) begin
+    clkf <= ~clkf;
 end
 
 endmodule
