@@ -1,0 +1,157 @@
+$date
+	Tue May 14 13:32:07 2019
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	100ps
+$end
+$scope module BancoPruebas $end
+$var wire 1 ! reset $end
+$var wire 1 " clkf $end
+$var wire 1 # clk8f $end
+$var wire 1 $ clk4f $end
+$var wire 1 % clk2f $end
+$scope module p_cond $end
+$var wire 1 ! reset $end
+$var wire 1 " clkf $end
+$var wire 1 # clk8f $end
+$var wire 1 $ clk4f $end
+$var wire 1 % clk2f $end
+$scope module generador_de_relojes $end
+$var wire 1 ! reset $end
+$var wire 1 # clk8f $end
+$var reg 1 % clk2f $end
+$var reg 1 $ clk4f $end
+$var reg 1 " clkf $end
+$upscope $end
+$upscope $end
+$scope module probador_ $end
+$var wire 1 % clk2f $end
+$var wire 1 $ clk4f $end
+$var wire 1 " clkf $end
+$var reg 1 # clk8f $end
+$var reg 1 ! reset $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+x%
+x$
+0#
+x"
+0!
+$end
+#450
+0"
+0%
+0$
+1#
+#900
+0#
+#1350
+1#
+#1800
+0#
+#2250
+1!
+1#
+#2700
+0#
+#3150
+1"
+1%
+1$
+1#
+#3600
+0#
+#4050
+0$
+1#
+#4500
+0#
+#4950
+0%
+1$
+1#
+#5400
+0#
+#5850
+0$
+1#
+#6300
+0#
+#6750
+0"
+1%
+1$
+1#
+#7200
+0#
+#7650
+0$
+1#
+#8100
+0#
+#8550
+0%
+1$
+1#
+#9000
+0#
+#9450
+0$
+1#
+#9900
+0#
+#10350
+1"
+1%
+1$
+1#
+#10800
+0#
+#11250
+0$
+1#
+#11700
+0#
+#12150
+0%
+1$
+1#
+#12600
+0#
+#13050
+0$
+1#
+#13500
+0#
+#13950
+0"
+1%
+1$
+1#
+#14400
+0#
+#14850
+0$
+1#
+#15300
+0#
+#15750
+0%
+0!
+1$
+1#
+#16200
+0#
+#16650
+0$
+1#
+#17100
+0#
+#17550
+1#

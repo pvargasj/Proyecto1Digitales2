@@ -9,20 +9,22 @@ module proy1_conductual (
 	output 						valid_in_0_c,
 	output 						valid_in_1_c,
 	input 						reset,
-	input 						clk,
+	input 						clk8f,
 	output						clkf,
 	output 						clk2f,
 	output 						clk4f);
 	
-	clkgen generador_de_relojes(clk, clkf, clk2f, clk4f);
+	clkgen generador_de_relojes(clkf, clk2f, clk4f, clk8f, reset);
 
 	mux mux_(
 		data_out_c, 
 		valid_out_c, 
 		data_in_0_c, 
-		data_in_1_c, 
 		valid_in_0_c, 
-		valid_in_1_c, 
-		clk2f);
+		data_in_1_c, 
+		valid_in_1_c,
+		reset, 
+		clk2f,
+		clk8f);
 
 endmodule
