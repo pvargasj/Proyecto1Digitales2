@@ -30,6 +30,7 @@ Los problemas que se tuvieron fueron los siguientes:
 3. ...
 
 
+
 ### Avance 2: 22de mayo, 17:00
 
 ### Avance 3: 29de mayo, 17:00
@@ -39,7 +40,11 @@ Los problemas que se tuvieron fueron los siguientes:
 ### Presentación final: 5dejunio, 17:00
 
 
-## Bitácora
+## Plan de trabajo
+| | Estudiante |
+| Fecha | Yeison Rodriguez | Pablo Vargas | Luis Soto |
+| 12/32/32 | ---- | ---- |
+| CONTENIDO COLUMNA 1 | CONTENIDO COLUMNA 2 | CONTENIDO COLUMNA 3 | CONTENIDO COLUMNA 4 |
 
 
 ## Compilación y ejecución
