@@ -10,6 +10,7 @@ module demux(
     input                   clk8f);         //Reloj a 2f Hz
 
     reg [5:0]       st, nxt_st;
+    reg             reset2, resetm;
 
     parameter RESET = 1;        //Reset activo
     parameter INICIAL = 2;      //Esperando datos 
@@ -20,13 +21,15 @@ module demux(
 
 
     always @(posedge clk8f) begin
-        if (reset == 0) begin
-            st <= RESET;            
-        end 
+        resetm <= reset;
+        reset2 <= resetm;            
     end
 
     always @(posedge clk2f) begin
-        if (reset == 1) begin
+        if (reset2 == 0) begin
+            st <= RESET;
+        end
+        else begin
             st <= nxt_st;
         end
     end
@@ -85,6 +88,8 @@ module demux(
                 valid_out_0_c = 1;
                 nxt_st = TRANS_0;
             end
+
+            //default: nxt_st = RESET;
         endcase
     end
 

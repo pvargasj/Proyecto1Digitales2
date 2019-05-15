@@ -5,6 +5,7 @@ yosys:
 	sed -i 's/data_out_c/data_out_s/g' proy1_synth.v
 	sed -i 's/module proy1_conductual/module proy1_synth/g' proy1_synth.v
 	sed -i 's/module clkgen/module clkgen_s/g' proy1_synth.v
+	sed -i 's/clkgen gen/clkgen_s gen/g' proy1_synth.v
 	sed -i 's/clk4f_c/clk4f_s/g' proy1_synth.v
 	sed -i 's/clk2f_c/clk2f_s/g' proy1_synth.v
 	sed -i 's/clkf_c/clkf_s/g' proy1_synth.v

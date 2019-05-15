@@ -10,6 +10,7 @@ module mux(
     input                   clk8f);
 
     reg  [5:0]          st, nxt_st; //Registros para los estados
+    reg             reset2, resetm;
 
     parameter RESET = 1;        //Reset activo
     parameter INICIAL = 2;      //Esperando datos 
@@ -18,17 +19,20 @@ module mux(
     parameter W_LST_DATA1 = 16;    //Esperando datos, último transmitido fue data_in_1
     parameter W_LST_DATA0 = 32;    //Esperando datos, último transmitido fue data_in_0
 
-    initial st = RESET;
-    //Si reset esta activo, estado es reset
-    //Si reset esta apagado, estado pasa a próximo estado
+
+
     always @(posedge clk8f) begin
-        if(reset == 0) begin
-            st <= RESET;
-        end
+        resetm <= reset;
+        reset2 <= resetm;            
     end
 
     always @(posedge clk2f) begin
-        st <= nxt_st;
+        if (reset2 == 0) begin
+            st <= RESET;
+        end
+        else begin
+            st <= nxt_st;
+        end
     end
 
     always @(*) begin
@@ -132,6 +136,7 @@ module mux(
                     nxt_st = TRANS_0;
                 end 
             end
+            //default: nxt_st = RESET;
         endcase
     end
 

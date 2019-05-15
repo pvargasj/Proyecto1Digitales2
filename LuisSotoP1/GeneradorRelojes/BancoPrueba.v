@@ -46,8 +46,11 @@ module BancoPruebas; // Testbench
 			   .clk8f		(clk8f),
 			   .reset		(reset),
 			   // Inputs
-			   .clkf		(clkf),
-			   .clk2f		(clk2f),
-			   .clk4f		(clk4f));
+			   .clkf_C		(clkf_C),
+			   .clk2f_c		(clk2f_c),
+			   .clk4f_c		(clk4f_c),
+			   .clkf_s		(clkf_s),
+			   .clk2f_s		(clk2f_s),
+			   .clk4f_s		(clk4f_s));
 	
 endmodule
