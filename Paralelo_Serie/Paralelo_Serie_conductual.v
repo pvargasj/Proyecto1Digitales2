@@ -13,7 +13,7 @@ module Paralelo_Serie_conductual(input  clk_8f,
 
 
     always @(*)begin
-        if(reset) begin
+        if(!reset) begin
             data_out_c = 0;
         end
         else
@@ -21,7 +21,7 @@ module Paralelo_Serie_conductual(input  clk_8f,
    end
 
    always @(posedge clk_8f) begin
-        if (!reset) begin
+        if (reset) begin
             j <= j-1;
         end
         else

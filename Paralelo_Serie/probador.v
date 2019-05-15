@@ -22,13 +22,13 @@ module probador(
 		data_in = 0;		//A continuaci�n, se generan las se�ales de prueba a usar para la simulaci�n	
 		valid_in = 0;
 		clk_f = 0;
-		reset = 1;
+		reset = 0;
 		//reset = 0;
 		@(posedge clk_8f);
 		data_in <= 'h11;
 		valid_in <= 'b0;
 		clk_f <= 'b1;       //Se pone en alto el clk_f
-		reset <= 'b0;
+		reset <= 'b1;
 		@(posedge clk_8f);
 		data_in <= 'h11;
 		valid_in <= 'b0;

@@ -138,22 +138,22 @@ module P_S_Yosys(clk_8f, clk_f, data_in, valid_in, reset,  data2send_e,  data_ou
     .B(valid_in),
     .Y( data2send_e[4])
   );
-  NOT _59_ (
+  NAND _59_ (
     .A(reset),
-    .Y(_10_)
-  );
-  NAND _60_ (
-    .A(_10_),
     .B(j[0]),
     .Y(_00_[0])
   );
-  NOR _61_ (
+  NOR _60_ (
     .A(j[1]),
     .B(j[0]),
+    .Y(_10_)
+  );
+  NOT _61_ (
+    .A(_10_),
     .Y(_11_)
   );
   NOT _62_ (
-    .A(_11_),
+    .A(reset),
     .Y(_12_)
   );
   NOT _63_ (
@@ -171,12 +171,12 @@ module P_S_Yosys(clk_8f, clk_f, data_in, valid_in, reset,  data2send_e,  data_ou
   );
   NOR _66_ (
     .A(_15_),
-    .B(reset),
+    .B(_12_),
     .Y(_16_)
   );
   NAND _67_ (
     .A(_16_),
-    .B(_12_),
+    .B(_11_),
     .Y(_00_[1])
   );
   NOT _68_ (
@@ -184,18 +184,18 @@ module P_S_Yosys(clk_8f, clk_f, data_in, valid_in, reset,  data2send_e,  data_ou
     .Y(_17_)
   );
   NAND _69_ (
-    .A(_11_),
+    .A(_10_),
     .B(_17_),
     .Y(_18_)
   );
   NOR _70_ (
-    .A(_11_),
+    .A(_10_),
     .B(_17_),
     .Y(_19_)
   );
   NOR _71_ (
     .A(_19_),
-    .B(reset),
+    .B(_12_),
     .Y(_20_)
   );
   NAND _72_ (
@@ -305,7 +305,7 @@ module P_S_Yosys(clk_8f, clk_f, data_in, valid_in, reset,  data2send_e,  data_ou
   );
   NAND _93_ (
     .A(_40_),
-    .B(_10_),
+    .B(reset),
     .Y(_41_)
   );
   NOR _94_ (
