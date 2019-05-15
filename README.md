@@ -2,8 +2,7 @@
 
 ## Compilación y ejecución
 ### Avance 1
-Los módulos clkgen, demux y mux se encuentran en la carpeta LuisSotoP1, el módulo Paralelo_Serie
-en la carpeta Paralelo_Serie
+Los módulos del avance 1 se encuentran en la carpeta avance 1.
 
 Para compilar y ejecutar simplemente ejecute el siguiente comando en las carpetas que contienen los Makefile
 ```
