@@ -1,7 +1,34 @@
 # Proyecto I IE523 Diseño de la capa PHY de la interfaz PCIe - Yeison Rodriguez B56074 - Pablo Vargas B57564 - Luis Soto B57082
 
-## Plan de trabajo
+## Bitácora
 ### Avance 1: 15de mayo, 17:00
+Para este avance se decidió que Luis Soto iba a trabajar más módulos ya que se ofreció porque tenía
+más tiempo libre que los demás integrantes del grupo. Pero lo establecido es que en el recuento final
+del proyecto todos tengamos una participación equivalente.
+
+Las reuniones que realizamos son principalmente virtuales por medio de un grupo de whatsapp, en ellas
+discutimos los módulos realizados por los compañeros para que en un futuro no existan problemas de conexión
+y también se discute la sintaxis a utilizar en los módulos conductuales y estructurales con el fin de utilizar 
+de manera correcta autoinst
+
+A continuacón se pesentan las tareas que realizó cada estudiante para este avance
+
+Luis Soto: Módulos del clk_gen, Mux, Demuxy Revisión de módulos de los compañeros. 
+El trabajo de este integrante fue realizado entre los días XXXX y ZZZZ del mes de Mayo
+
+Pablo Vargas: Módulo de Paralelo a serial y revisión de módulos de los compañeros
+El trabajo de este integrante fue realizado entre los días XXXX y ZZZZ del mes de Mayo
+
+Yeison Rodríguez: Bitácora, plan de trabajo y revisión de módulos de los compañeros
+El trabajo de este integrante fue realizado entre los días 12 y 15 del mes de Mayo
+
+
+
+Los problemas que se tuvieron fueron los siguientes:
+1. ...
+2. ...
+3. ...
+
 
 ### Avance 2: 22de mayo, 17:00
 
@@ -10,6 +37,9 @@
 ### Avance 4: 1° de junio, 08:00
 
 ### Presentación final: 5dejunio, 17:00
+
+
+## Bitácora
 
 
 ## Compilación y ejecución
