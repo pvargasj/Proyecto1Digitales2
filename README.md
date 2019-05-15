@@ -1,5 +1,16 @@
 # Proyecto I IE523 Diseño de la capa PHY de la interfaz PCIe - Yeison Rodriguez B56074 - Pablo Vargas B57564 - Luis Soto B57082
 
+## Compilación y ejecución
+### Avance 1
+Los módulos clkgen, demux y mux se encuentran en la carpeta LuisSotoP1, el módulo Paralelo_Serie
+en la carpeta Paralelo_Serie
+
+Para compilar y ejecutar simplemente ejecute el siguiente comando en las carpetas que contienen los Makefile
+```
+>> make
+```
+Inmediatamente se mostrará una simulación en el programa Gtkwave de las formas de onda
+
 ## Bitácora
 ### Avance 1: 15de mayo, 17:00
 Para este avance se decidió que Luis Soto iba a trabajar más módulos ya que se ofreció porque tenía
@@ -39,12 +50,7 @@ Los problemas que se tuvieron fueron los siguientes:
 
 ### Presentación final: 5dejunio, 17:00
 
-## Compilación y ejecución
-Para compilar y ejecutar simplemente ejecute el siguiente comando en las carpetas que contienen los Makefile
-```
->> make
-```
-Inmediatamente se mostrará una simulación en el programa Gtkwave de las formas de onda
+
 
 ## Requisitos previos
 
