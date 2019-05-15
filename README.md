@@ -13,7 +13,7 @@ de manera correcta autoinst
 
 A continuacón se pesentan las tareas que realizó cada estudiante para este avance
 
-Luis Soto: Módulos del clk_gen, Mux, Demuxy Revisión de módulos de los compañeros. 
+Luis Soto: Módulos del clk_gen, Mux, Demux y Revisión de módulos de los compañeros. 
 El trabajo de este integrante fue realizado entre los días XXXX y ZZZZ del mes de Mayo
 
 Pablo Vargas: Módulo de Paralelo a serial y revisión de módulos de los compañeros
@@ -30,6 +30,7 @@ Los problemas que se tuvieron fueron los siguientes:
 3. ...
 
 
+
 ### Avance 2: 22de mayo, 17:00
 
 ### Avance 3: 29de mayo, 17:00
@@ -37,10 +38,6 @@ Los problemas que se tuvieron fueron los siguientes:
 ### Avance 4: 1° de junio, 08:00
 
 ### Presentación final: 5dejunio, 17:00
-
-
-## Bitácora
-
 
 ## Compilación y ejecución
 Para compilar y ejecutar simplemente ejecute el siguiente comando en las carpetas que contienen los Makefile
