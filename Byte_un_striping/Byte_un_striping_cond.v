@@ -10,17 +10,15 @@ module Byte_un_striping_cond(
     output reg valid_out_c
 );
 //reg reset_mid, reset2;
-reg [3:0] estado, prox_estado;    
-parameter RESET = 1;
-parameter TRANSMITIENDO_DATOS_LANE_1 = 2;
-parameter ESPERANDO_ENTRADA = 4;
-parameter TRANSMITIENDO_DATOS_LANE_0 = 8;
-
+reg [2:0] estado, prox_estado;    
+parameter TRANSMITIENDO_DATOS_LANE_1 = 1;
+parameter ESPERANDO_ENTRADA = 2;
+parameter TRANSMITIENDO_DATOS_LANE_0 = 4;
 
 // Maquina de estados
 always @(posedge clk_2f) begin
     if (reset == 0) begin
-        estado <= RESET;
+        estado <= ESPERANDO_ENTRADA;
     end
     if (reset == 1) begin
         estado <= prox_estado;           
@@ -32,13 +30,6 @@ always @(*) begin
     data_out_c = 0;
     valid_out_c = 0;
     case (estado)
-        RESET: begin
-            prox_estado = RESET;
-            if (reset) begin
-                prox_estado = ESPERANDO_ENTRADA;
-            end
-        end
-
         ESPERANDO_ENTRADA: begin
             prox_estado = ESPERANDO_ENTRADA;
             if (valid_0 == 1) begin
@@ -47,7 +38,7 @@ always @(*) begin
                 valid_out_c = 1;
             end
             if (reset == 0) begin
-                prox_estado = RESET;
+                prox_estado = ESPERANDO_ENTRADA;
             end
         end
 
@@ -61,7 +52,7 @@ always @(*) begin
                 valid_out_c = 0;
             end
             if (reset == 0) begin
-                prox_estado = RESET;
+                prox_estado = ESPERANDO_ENTRADA;
             end            
         end
 
@@ -75,7 +66,7 @@ always @(*) begin
                 valid_out_c = 0;
             end
             if (reset == 0) begin
-                prox_estado = RESET;
+                prox_estado = ESPERANDO_ENTRADA;
             end                
         end
     endcase
