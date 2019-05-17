@@ -4,7 +4,6 @@
 (* top =  1  *)
 (* src = "Byte_un_striping_cond.v:1" *)
 module Byte_un_striping_estr(clk_f, clk_2f, lane_0, lane_1, valid_0, valid_1, reset, data_out_e, valid_out_e);
-  (* src = "Byte_un_striping_cond.v:15" *)
   wire _00_;
   wire _01_;
   wire _02_;
@@ -37,21 +36,14 @@ module Byte_un_striping_estr(clk_f, clk_2f, lane_0, lane_1, valid_0, valid_1, re
   wire _29_;
   wire _30_;
   wire _31_;
-  wire _32_;
-  wire _33_;
-  wire _34_;
-  wire _35_;
-  wire _36_;
-  wire _37_;
-  wire _38_;
   (* src = "Byte_un_striping_cond.v:3" *)
   input clk_2f;
   (* src = "Byte_un_striping_cond.v:2" *)
   input clk_f;
-  (* src = "Byte_un_striping_cond.v:13" *)
-  wire control;
   (* src = "Byte_un_striping_cond.v:9" *)
   output [7:0] data_out_e;
+  (* onehot = 32'd1 *)
+  wire [3:0] estado;
   (* src = "Byte_un_striping_cond.v:4" *)
   input [7:0] lane_0;
   (* src = "Byte_un_striping_cond.v:5" *)
@@ -64,237 +56,223 @@ module Byte_un_striping_estr(clk_f, clk_2f, lane_0, lane_1, valid_0, valid_1, re
   input valid_1;
   (* src = "Byte_un_striping_cond.v:10" *)
   output valid_out_e;
-  NOR _39_ (
-    .A(lane_0[0]),
-    .B(control),
+  NOT _32_ (
+    .A(reset),
+    .Y(_29_)
+  );
+  NOR _33_ (
+    .A(estado[1]),
+    .B(estado[2]),
     .Y(_01_)
   );
-  NOT _40_ (
-    .A(valid_0),
+  NOR _34_ (
+    .A(_01_),
+    .B(valid_0),
     .Y(_02_)
   );
-  NOT _41_ (
-    .A(reset),
+  NOT _35_ (
+    .A(estado[0]),
     .Y(_03_)
   );
-  NOR _42_ (
-    .A(_03_),
-    .B(_02_),
-    .Y(valid_out_e)
-  );
-  NOT _43_ (
-    .A(lane_1[0]),
+  NOT _36_ (
+    .A(valid_1),
     .Y(_04_)
   );
-  NAND _44_ (
-    .A(_04_),
-    .B(control),
+  NAND _37_ (
+    .A(estado[3]),
+    .B(_04_),
     .Y(_05_)
   );
-  NAND _45_ (
+  NAND _38_ (
     .A(_05_),
-    .B(valid_out_e),
+    .B(_03_),
     .Y(_06_)
   );
-  NOR _46_ (
+  NOR _39_ (
     .A(_06_),
-    .B(_01_),
-    .Y(data_out_e[0])
-  );
-  NOR _47_ (
-    .A(lane_0[1]),
-    .B(control),
+    .B(_02_),
     .Y(_07_)
   );
-  NOT _48_ (
-    .A(lane_1[1]),
+  NOR _40_ (
+    .A(_07_),
+    .B(_29_),
+    .Y(_00_)
+  );
+  NAND _41_ (
+    .A(estado[3]),
+    .B(valid_1),
     .Y(_08_)
   );
-  NAND _49_ (
-    .A(_08_),
-    .B(control),
+  NOT _42_ (
+    .A(valid_0),
     .Y(_09_)
   );
-  NAND _50_ (
-    .A(_09_),
-    .B(valid_out_e),
+  NOR _43_ (
+    .A(_01_),
+    .B(_09_),
     .Y(_10_)
   );
-  NOR _51_ (
+  NOT _44_ (
     .A(_10_),
-    .B(_07_),
-    .Y(data_out_e[1])
-  );
-  NOR _52_ (
-    .A(lane_0[2]),
-    .B(control),
     .Y(_11_)
   );
-  NOT _53_ (
-    .A(lane_1[2]),
+  NAND _45_ (
+    .A(_11_),
+    .B(_08_),
+    .Y(valid_out_e)
+  );
+  NOT _46_ (
+    .A(_08_),
     .Y(_12_)
   );
-  NAND _54_ (
+  NAND _47_ (
     .A(_12_),
-    .B(control),
+    .B(lane_1[0]),
     .Y(_13_)
   );
-  NAND _55_ (
-    .A(_13_),
-    .B(valid_out_e),
+  NAND _48_ (
+    .A(_10_),
+    .B(lane_0[0]),
     .Y(_14_)
   );
-  NOR _56_ (
+  NAND _49_ (
     .A(_14_),
-    .B(_11_),
-    .Y(data_out_e[2])
+    .B(_13_),
+    .Y(data_out_e[0])
   );
-  NOR _57_ (
-    .A(lane_0[3]),
-    .B(control),
+  NAND _50_ (
+    .A(_12_),
+    .B(lane_1[1]),
     .Y(_15_)
   );
-  NOT _58_ (
-    .A(lane_1[3]),
+  NAND _51_ (
+    .A(_10_),
+    .B(lane_0[1]),
     .Y(_16_)
   );
-  NAND _59_ (
+  NAND _52_ (
     .A(_16_),
-    .B(control),
+    .B(_15_),
+    .Y(data_out_e[1])
+  );
+  NAND _53_ (
+    .A(_12_),
+    .B(lane_1[2]),
     .Y(_17_)
   );
-  NAND _60_ (
-    .A(_17_),
-    .B(valid_out_e),
+  NAND _54_ (
+    .A(_10_),
+    .B(lane_0[2]),
     .Y(_18_)
   );
-  NOR _61_ (
+  NAND _55_ (
     .A(_18_),
-    .B(_15_),
-    .Y(data_out_e[3])
+    .B(_17_),
+    .Y(data_out_e[2])
   );
-  NOR _62_ (
-    .A(lane_0[4]),
-    .B(control),
+  NAND _56_ (
+    .A(_12_),
+    .B(lane_1[3]),
     .Y(_19_)
   );
-  NOT _63_ (
-    .A(lane_1[4]),
+  NAND _57_ (
+    .A(_10_),
+    .B(lane_0[3]),
     .Y(_20_)
   );
-  NAND _64_ (
+  NAND _58_ (
     .A(_20_),
-    .B(control),
+    .B(_19_),
+    .Y(data_out_e[3])
+  );
+  NAND _59_ (
+    .A(_12_),
+    .B(lane_1[4]),
     .Y(_21_)
   );
-  NAND _65_ (
-    .A(_21_),
-    .B(valid_out_e),
+  NAND _60_ (
+    .A(_10_),
+    .B(lane_0[4]),
     .Y(_22_)
   );
-  NOR _66_ (
+  NAND _61_ (
     .A(_22_),
-    .B(_19_),
+    .B(_21_),
     .Y(data_out_e[4])
   );
-  NOR _67_ (
-    .A(lane_0[5]),
-    .B(control),
+  NAND _62_ (
+    .A(_12_),
+    .B(lane_1[5]),
     .Y(_23_)
   );
-  NOT _68_ (
-    .A(lane_1[5]),
+  NAND _63_ (
+    .A(_10_),
+    .B(lane_0[5]),
     .Y(_24_)
   );
-  NAND _69_ (
+  NAND _64_ (
     .A(_24_),
-    .B(control),
-    .Y(_25_)
-  );
-  NAND _70_ (
-    .A(_25_),
-    .B(valid_out_e),
-    .Y(_26_)
-  );
-  NOR _71_ (
-    .A(_26_),
     .B(_23_),
     .Y(data_out_e[5])
   );
-  NOR _72_ (
-    .A(lane_0[6]),
-    .B(control),
-    .Y(_27_)
+  NAND _65_ (
+    .A(_12_),
+    .B(lane_1[6]),
+    .Y(_25_)
   );
-  NOT _73_ (
-    .A(lane_1[6]),
-    .Y(_28_)
+  NAND _66_ (
+    .A(_10_),
+    .B(lane_0[6]),
+    .Y(_26_)
   );
-  NAND _74_ (
-    .A(_28_),
-    .B(control),
-    .Y(_29_)
-  );
-  NAND _75_ (
-    .A(_29_),
-    .B(valid_out_e),
-    .Y(_30_)
-  );
-  NOR _76_ (
-    .A(_30_),
-    .B(_27_),
+  NAND _67_ (
+    .A(_26_),
+    .B(_25_),
     .Y(data_out_e[6])
   );
-  NOR _77_ (
-    .A(lane_0[7]),
-    .B(control),
-    .Y(_31_)
+  NAND _68_ (
+    .A(_12_),
+    .B(lane_1[7]),
+    .Y(_27_)
   );
-  NOT _78_ (
-    .A(lane_1[7]),
-    .Y(_32_)
+  NAND _69_ (
+    .A(_10_),
+    .B(lane_0[7]),
+    .Y(_28_)
   );
-  NAND _79_ (
-    .A(_32_),
-    .B(control),
-    .Y(_33_)
-  );
-  NAND _80_ (
-    .A(_33_),
-    .B(valid_out_e),
-    .Y(_34_)
-  );
-  NOR _81_ (
-    .A(_34_),
-    .B(_31_),
+  NAND _70_ (
+    .A(_28_),
+    .B(_27_),
     .Y(data_out_e[7])
   );
-  NOT _82_ (
-    .A(control),
-    .Y(_35_)
+  NOR _71_ (
+    .A(_11_),
+    .B(_29_),
+    .Y(_30_)
   );
-  NOT _83_ (
-    .A(valid_1),
-    .Y(_36_)
+  NOR _72_ (
+    .A(_08_),
+    .B(_29_),
+    .Y(_31_)
   );
-  NAND _84_ (
-    .A(_36_),
-    .B(_02_),
-    .Y(_37_)
+  DFF _73_ (
+    .C(clk_2f),
+    .D(_29_),
+    .Q(estado[0])
   );
-  NAND _85_ (
-    .A(_37_),
-    .B(_35_),
-    .Y(_38_)
+  DFF _74_ (
+    .C(clk_2f),
+    .D(_31_),
+    .Q(estado[1])
   );
-  NAND _86_ (
-    .A(_38_),
-    .B(reset),
-    .Y(_00_)
-  );
-  DFF _87_ (
+  DFF _75_ (
     .C(clk_2f),
     .D(_00_),
-    .Q(control)
+    .Q(estado[2])
+  );
+  DFF _76_ (
+    .C(clk_2f),
+    .D(_30_),
+    .Q(estado[3])
   );
 endmodule

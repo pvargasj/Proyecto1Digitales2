@@ -97,11 +97,15 @@ initial begin
     lane_1 <= 8'h08 ;
 
     @(posedge clk_2f);
-    valid_0 <= 0;
-    lane_0 <= 8'h62 ;
+    valid_0 <= 1;
+    lane_0 <= 8'h06 ; 
 
     @(posedge clk_2f);
     valid_1 <= 0;
+
+
+    @(posedge clk_2f);
+    valid_0 <= 0;
     lane_1 <= 8'h12 ;
 
     @(posedge clk_2f);
