@@ -1,9 +1,6 @@
 # Proyecto I IE523 Diseño de la capa PHY de la interfaz PCIe - Yeison Rodriguez B56074 - Pablo Vargas B57564 - Luis Soto B57082
 
 ## Compilación y ejecución
-### Avance 1
-Los módulos del avance 1 se encuentran en la carpeta avance 1.
-
 Para compilar y ejecutar simplemente ejecute el siguiente comando en las carpetas que contienen los Makefile
 ```
 >> make
