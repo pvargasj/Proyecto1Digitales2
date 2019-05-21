@@ -28,86 +28,120 @@ initial begin
 
     
     @(posedge clk_2f);
-	@(posedge clk_2f);
-    
-    @(posedge clk_2f);
-	@(posedge clk_2f);
-    
+    clk_f <= ~clk_f;
     reset <= 1;
+	@(posedge clk_2f);
+    clk_f <= ~clk_f;
+    @(posedge clk_2f);
+    
+    clk_f <= ~clk_f;
+	@(posedge clk_2f);
+    clk_f <= ~clk_f;
+    
     data_in_0_c <= 8'h A4 ;
     data_in_1_c <= 8'h 32 ;
     @(posedge clk_2f);
+    clk_f <= ~clk_f;
     @(posedge clk_2f);
-    
+    clk_f <= ~clk_f;
     @(posedge clk_2f);
+    clk_f <= ~clk_f;
+    @(posedge clk_2f);
+    clk_f <= ~clk_f;
     valid_in_0_c <= 1;
     data_in_0_c <= 8'h FF ;
     @(posedge clk_2f);
+    clk_f <= ~clk_f;
     
     valid_in_1_c <= 1;
     data_in_0_c <= 8'h EE ;
     data_in_1_c <= 8'h 00 ;
     @(posedge clk_2f);
+    clk_f <= ~clk_f;
     data_in_0_c <= 8'h DD ;
     data_in_1_c <= 8'h 01 ;    
     @(posedge clk_2f);
+    clk_f <= ~clk_f;
     
     data_in_0_c <= 8'h CC ;
     data_in_1_c <= 8'h 02 ;   
     @(posedge clk_2f);
+    clk_f <= ~clk_f;
     valid_in_0_c <= 0;
     valid_in_1_c <= 0;
     @(posedge clk_2f);
+    clk_f <= ~clk_f;
     
     @(posedge clk_2f);
     valid_in_1_c <= 0;
     data_in_1_c <= 8'h 03 ; 
     @(posedge clk_2f);
+    clk_f <= ~clk_f;
     
     valid_in_0_c <= 1;
     data_in_1_c <= 8'h 04 ; 
     data_in_0_c <= 8'h BB ;
     @(posedge clk_2f);
+    clk_f <= ~clk_f;
     valid_in_0_c <= 0;
     valid_in_1_c <= 0;
     @(posedge clk_2f);
+    clk_f <= ~clk_f;
     
     @(posedge clk_2f);
+    clk_f <= ~clk_f;
     valid_in_0_c <= 1;
     valid_in_1_c <= 1;
     data_in_1_c <= 8'h 05 ; 
     data_in_0_c <= 8'h AA ;   
     @(posedge clk_2f);
+    clk_f <= ~clk_f;
     
     data_in_1_c <= 8'h 06 ; 
     data_in_0_c <= 8'h 99 ;    
-    @(posedge clk_2f); 
+    @(posedge clk_2f);
+    clk_f <= ~clk_f; 
     valid_in_0_c <= 0;
     valid_in_1_c <= 0;
     @(posedge clk_2f); 
+    clk_f <= ~clk_f;
     
     @(posedge clk_2f); 
+    clk_f <= ~clk_f;
     valid_in_0_c <= 1;
     valid_in_1_c <= 1;  
     data_in_1_c <= 8'h 07 ; 
     data_in_0_c <= 8'h 88 ;  
 
-    @(posedge clk_2f); 
+    @(posedge clk_2f);
+    clk_f <= ~clk_f; 
     data_in_1_c <= 8'h 08 ; 
     data_in_0_c <= 8'h 77 ;        
 
     @(posedge clk_2f);
+    clk_f <= ~clk_f;
     data_in_1_c <= 8'h 16 ; 
     data_in_0_c <= 8'h 32 ;  
 
-    @(posedge clk_2f);   
+    @(posedge clk_2f);
+    clk_f <= ~clk_f;   
     valid_in_0_c <= 0;
     valid_in_1_c <= 0;  
 
     @(posedge clk_2f); 
+    clk_f <= ~clk_f;
+
+    @(posedge clk_2f); 
+    clk_f <= ~clk_f;
+
+     @(posedge clk_2f); 
+    clk_f <= ~clk_f;
+
     reset <= 0;
     @(posedge clk_2f); 
+    clk_f <= ~clk_f;
     
+
     $finish;
 end  
 
