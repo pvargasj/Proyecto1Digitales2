@@ -1,9 +1,6 @@
 # Proyecto I IE523 Diseño de la capa PHY de la interfaz PCIe - Yeison Rodriguez B56074 - Pablo Vargas B57564 - Luis Soto B57082
 
 ## Compilación y ejecución
-### Avance 1
-Los módulos del avance 1 se encuentran en la carpeta avance 1.
-
 Para compilar y ejecutar simplemente ejecute el siguiente comando en las carpetas que contienen los Makefile
 ```
 >> make
@@ -35,13 +32,31 @@ El trabajo de este integrante fue realizado entre los días 12 y 15 del mes de M
 
 
 Los problemas que se tuvieron fueron los siguientes:
-1. ...
+1. Problemas de discusión del diseño del generador de relojes, ya que no sabíamos si los relojes debían compartir todos un ciclo de reloj positivo al menos en algún punto.
 2. ...
 3. ...
 
 
 
 ### Avance 2: 22de mayo, 17:00
+Para este avance se siguió codificando según lo planeado en el plan de trabajo durante toda la semana. Cada vez que un integrante termina un módulo es subido a git para que los demás puedan realizar revisiones. Las reuniones siguen siendo virtuales ya que es más cómodo y no ha sido necesaria una reunión física.
+
+A continuacón se pesentan las tareas que realizó cada estudiante para este avance
+
+Luis Soto: Revisión de módulos de los compañeros. 
+El trabajo de este integrante fue realizado entre los días XXXX y ZZZZ del mes de Mayo
+
+Pablo Vargas: Módulo de serial a paralelo y revisión de módulos de los compañeros
+El trabajo de este integrante fue realizado entre los días XXXX y ZZZZ del mes de Mayo
+
+Yeison Rodríguez: Modulos: Byte striping, Byte un striping y phy_tx. También revisión de módulos de los compañeros
+El trabajo de este integrante fue realizado entre los días 17 y 22 del mes de Mayo
+ 
+
+Los problemas que se tuvieron fueron los siguientes:
+1. Problemas a la hora de conectar el módulo phy_tx ya que se tuvo dificultades a la hora de sincronizar el funcionamiento de todos los elementos
+2. El módulo byte_un_triping parecía funcionar de manera correcta pero al ingresar paquetes de datos que no eran múltiplos de 2 se tenían problemas, por lo que se tuvo que hacer un nuevo diseño a partir de una máquina de estados.
+3. ...
 
 ### Avance 3: 29de mayo, 17:00
 

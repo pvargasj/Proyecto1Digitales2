@@ -1641,13 +1641,13 @@ endmodule
 (* top =  1  *)
 (* src = "phy_tx_cond.v:5" *)
 module phy_tx_estr(data_in_0_c, data_in_1_c, valid_in_0_c, valid_in_1_c, clk_f, clk_2f, clk_8f, reset, Paral_serial_out_0_e, Paral_serial_out_1_e);
-  (* src = "phy_tx_cond.v:22" *)
+  (* src = "phy_tx_cond.v:26" *)
   wire [7:0] _00_;
-  (* src = "phy_tx_cond.v:22" *)
+  (* src = "phy_tx_cond.v:26" *)
   wire [7:0] _01_;
-  (* src = "phy_tx_cond.v:22" *)
+  (* src = "phy_tx_cond.v:26" *)
   wire _02_;
-  (* src = "phy_tx_cond.v:22" *)
+  (* src = "phy_tx_cond.v:26" *)
   wire _03_;
   wire _04_;
   wire _05_;
@@ -1678,10 +1678,10 @@ module phy_tx_estr(data_in_0_c, data_in_1_c, valid_in_0_c, valid_in_1_c, clk_f, 
   input clk_8f;
   (* src = "phy_tx_cond.v:10" *)
   input clk_f;
-  (* src = "phy_tx_cond.v:39" *)
+  (* src = "phy_tx_cond.v:45" *)
   (* unused_bits = "0 1 2 3 4 5 6 7" *)
   wire [7:0] data2send_c0;
-  (* src = "phy_tx_cond.v:40" *)
+  (* src = "phy_tx_cond.v:46" *)
   (* unused_bits = "0 1 2 3 4 5 6 7" *)
   wire [7:0] data2send_c1;
   (* src = "phy_tx_cond.v:18" *)
@@ -1694,15 +1694,19 @@ module phy_tx_estr(data_in_0_c, data_in_1_c, valid_in_0_c, valid_in_1_c, clk_f, 
   input [7:0] data_in_1_c;
   (* src = "phy_tx_cond.v:47" *)
   wire [7:0] data_out_c_mux_estr;
-  (* src = "phy_tx_cond.v:42" *)
+  (* src = "phy_tx_cond.v:48" *)
   wire [7:0] lane_0_c;
-  (* src = "phy_tx_cond.v:43" *)
+  (* src = "phy_tx_cond.v:49" *)
   wire [7:0] lane_1_c;
   (* src = "phy_tx_cond.v:13" *)
   input reset;
-  (* src = "phy_tx_cond.v:49" *)
-  wire valid_0_c_BS;
+  (* src = "phy_tx_cond.v:22" *)
+  wire reset0;
+  (* src = "phy_tx_cond.v:23" *)
+  wire reset1;
   (* src = "phy_tx_cond.v:50" *)
+  wire valid_0_c_BS;
+  (* src = "phy_tx_cond.v:51" *)
   wire valid_1_c_BS;
   (* src = "phy_tx_cond.v:19" *)
   wire valid_in_0_FF;
@@ -1712,7 +1716,7 @@ module phy_tx_estr(data_in_0_c, data_in_1_c, valid_in_0_c, valid_in_1_c, clk_f, 
   wire valid_in_1_FF;
   (* src = "phy_tx_cond.v:9" *)
   input valid_in_1_c;
-  (* src = "phy_tx_cond.v:48" *)
+  (* src = "phy_tx_cond.v:52" *)
   wire valid_mux_estr;
   NOT _23_ (
     .A(valid_in_0_c),
@@ -1970,7 +1974,12 @@ module phy_tx_estr(data_in_0_c, data_in_1_c, valid_in_0_c, valid_in_1_c, clk_f, 
     .D(_03_),
     .Q(valid_in_1_FF)
   );
-  (* src = "phy_tx_cond.v:66" *)
+  DFF _78_ (
+    .C(clk_2f),
+    .D(reset),
+    .Q(reset1)
+  );
+  (* src = "phy_tx_cond.v:70" *)
   Byte_striping_estr Byte_striping_instance0 (
     .clk_2f(clk_2f),
     .data_in(data_out_c_mux_estr),
@@ -1981,7 +1990,7 @@ module phy_tx_estr(data_in_0_c, data_in_1_c, valid_in_0_c, valid_in_1_c, clk_f, 
     .valid_1_c(valid_1_c_BS),
     .valid_in(valid_mux_estr)
   );
-  (* src = "phy_tx_cond.v:78" *)
+  (* src = "phy_tx_cond.v:92" *)
   Paralelo_Serie_estructural Paralelo_Serie_estructural_instance0 (
     .clk_8f(clk_8f),
     .clk_f(clk_f),
@@ -1991,17 +2000,17 @@ module phy_tx_estr(data_in_0_c, data_in_1_c, valid_in_0_c, valid_in_1_c, clk_f, 
     .reset(reset),
     .valid_in(valid_0_c_BS)
   );
-  (* src = "phy_tx_cond.v:89" *)
+  (* src = "phy_tx_cond.v:103" *)
   Paralelo_Serie_estructural Paralelo_Serie_estructural_instance1 (
     .clk_8f(clk_8f),
     .clk_f(clk_f),
     .data2send_c(data2send_c1),
     .data_in(lane_1_c),
     .data_out_c(Paral_serial_out_1_e),
-    .reset(reset),
+    .reset(reset1),
     .valid_in(valid_1_c_BS)
   );
-  (* src = "phy_tx_cond.v:53" *)
+  (* src = "phy_tx_cond.v:55" *)
   mux_estr mux_estr_instance0 (
     .clk_2f(clk_2f),
     .clk_8f(clk_8f),
@@ -2013,4 +2022,5 @@ module phy_tx_estr(data_in_0_c, data_in_1_c, valid_in_0_c, valid_in_1_c, clk_f, 
     .valid_in_1_c(valid_in_1_FF),
     .valid_out_c(valid_mux_estr)
   );
+  assign reset0 = reset;
 endmodule
