@@ -4,7 +4,7 @@
 //includes de archivos
 `include "Paralelo_Serie_conductual.v"
 `include "probador.v"
-//`include "S_P_Yosys.v"
+`include "S_P_Yosys.v"
 `include "Serie_Paralelo.v"
  
 module BancoPruebas; // Testbench
@@ -48,16 +48,16 @@ module BancoPruebas; // Testbench
 						 .reset			(reset));					 
 
 	// Descripción sintetizada del paralelo serie.
-	//S_P_Yosys	S_P_synth(/*AUTOINST*/
-	/*			  // Outputs
+	S_P_Yosys	S_P_synth(/*AUTOINST*/
+				  // Outputs
 				  .valid_out_e			(valid_out_e),
 				  .parallel_out_e		(parallel_out_e[7:0]),
 				  // Inputs
 				  .clk_8f				(clk_8f),
 				  .clk_f				(clk_f),
-				  .data_in				(data_in[7:0]),
+				  .data_in				(data_out_c),
 				  .reset				(reset));
-*/
+
 	// Probador: generador de señales y monitor
 	probador probador_(/*AUTOINST*/
 			   // Outputs

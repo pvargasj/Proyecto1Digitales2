@@ -14,45 +14,51 @@ module Serie_Paralelo(input  clk_8f,
     wire clk_8f, clk_f, data_in, reset;
     reg active;
 
-
     // INICIALIZACION DE VARIABLES Y ACTIVACIÓN DEL ACTIVE
     always @(*) begin
-        if(!reset) begin
-            active = 0;
-            Data_P = 8'b0;
-            bit_counter = 3'b111;
-            BC_counter = 3'b0;
-            valid_out_c = 0;
-            parallel_out_c =0;
+         if(BC_counter == 4) begin
+            active = 1; 
         end
         else begin
-            if(BC_counter == 4 && reset) begin
-                active = 1;
-            end
+            active = 0;
         end
+
+        
     end 
 
-
     // PARALELIZADO:
-    
-    always @(posedge clk_8f) begin
-        if(reset) begin
-            Data_P[bit_counter] <= data_in;
-            bit_counter <= bit_counter - 1;
-        end
-    end
 
-    always @(posedge clk_f) begin
-        if (reset && !active && Data_P == 'hBC) begin
-            BC_counter <= BC_counter +1;
-        end 
-        else begin
-            if(reset && active) begin
+       always @(posedge clk_f) begin
+            if(!active) begin
+                valid_out_c <= 0;
+                parallel_out_c <=0;
+                
+            end
+            else begin
                 valid_out_c <= 1;
                 parallel_out_c <= Data_P;
             end
+          
+    end
+    
+    always @(posedge clk_8f) begin
+        if(!reset) begin
+            bit_counter = 3'b111;
+            Data_P = 8'b0;
+            BC_counter = 3'b0;
+        end
+        else begin
+            Data_P[bit_counter] <= data_in;
+            bit_counter <= bit_counter - 1;
+
+            if (Data_P == 'hBC && bit_counter == 0) begin
+                BC_counter <= BC_counter +1;
+            end
+           
         end
     end
+
+ 
     
 
 endmodule
