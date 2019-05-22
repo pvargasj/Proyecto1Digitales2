@@ -25,10 +25,10 @@ module probador(
 		reset = 0;
 		//reset = 0;
 		@(posedge clk_8f);
+		reset <= 'b1;
 		data_in <= 'h11;
 		valid_in <= 'b0;
 		clk_f <= 'b1;       //Se pone en alto el clk_f
-		reset <= 'b1;
 		@(posedge clk_8f);
 		data_in <= 'h11;
 		valid_in <= 'b0;
@@ -152,7 +152,7 @@ module probador(
 		data_in <= 'h4e;
 		@(posedge clk_8f);
 		data_in  <= 'h44;
-		valid_in <= 'b1;
+		valid_in <= 'b0;
 		clk_f <='b1;         // Se pone en alto clk_f
 		@(posedge clk_8f);
 		data_in <= 'h44;
@@ -171,6 +171,27 @@ module probador(
 		data_in <= 'h44;
 		@(posedge clk_8f);
 		data_in <= 'h44;
+		@(posedge clk_8f);
+		data_in  <= 'ha2;
+		valid_in <= 'b1;
+		clk_f <='b1;         // Se pone en alto clk_f
+		@(posedge clk_8f);
+		@(posedge clk_8f);
+		@(posedge clk_8f);
+		@(posedge clk_8f);
+		clk_f <= 'b0;        // Se pone en bajo clk_f
+		@(posedge clk_8f);
+		@(posedge clk_8f);
+		@(posedge clk_8f);
+		@(posedge clk_8f);
+		clk_f <='b1;         // Se pone en alto clk_f
+		data_in <= 'h90;
+		valid_in <=1;
+		@(posedge clk_8f);
+		@(posedge clk_8f);
+		@(posedge clk_8f);
+		@(posedge clk_8f);
+
 
 		#9 $finish;						// Termina de almacenar se�ales
 	end

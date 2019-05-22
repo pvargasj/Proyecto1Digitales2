@@ -16,7 +16,7 @@ module Serie_Paralelo(input  clk_8f,
 
     // INICIALIZACION DE VARIABLES Y ACTIVACIÓN DEL ACTIVE
     always @(*) begin
-         if(BC_counter == 4) begin
+         if(BC_counter > 3) begin
             active = 1; 
         end
         else begin
@@ -29,7 +29,7 @@ module Serie_Paralelo(input  clk_8f,
     // PARALELIZADO:
 
        always @(posedge clk_f) begin
-            if(!active) begin
+            if(!active || Data_P == 'hBC) begin
                 valid_out_c <= 0;
                 parallel_out_c <=0;
                 

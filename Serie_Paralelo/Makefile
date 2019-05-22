@@ -1,7 +1,10 @@
-all:
+all:	
+	@make synth
+	@make sed
 	@make compile
 	@make sim
 	@make view
+	@make delete
 
 compile: 
 	iverilog  BancoPrueba.v -o Test_S_P.out
@@ -20,3 +23,7 @@ sed:
 
 synth: 
 	yosys yosysfile_S_P.ys
+
+delete:
+	rm Test_S_P.out
+	rm S_P.vcd
