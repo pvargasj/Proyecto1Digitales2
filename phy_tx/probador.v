@@ -26,7 +26,10 @@ initial begin
     valid_in_0_c = 0;
     valid_in_1_c = 0;
 
-    
+    @(posedge clk_2f);
+    clk_f <= ~clk_f;
+    @(posedge clk_2f);
+    clk_f <= ~clk_f;
     @(posedge clk_2f);
     clk_f <= ~clk_f;
     reset <= 1;
