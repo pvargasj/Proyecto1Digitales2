@@ -48,33 +48,30 @@ wire [7:0]		lane_c_1;		// From Serie_Paralelo_instance1 of Serie_Paralelo.v
 wire			valid_c_0_SP;		// From Serie_Paralelo_instance0 of Serie_Paralelo.v
 wire			valid_c_1_SP;		// From Serie_Paralelo_instance1 of Serie_Paralelo.v
 wire			valid_out_c_US;		// From Byte_un_striping_instance0 of Byte_un_striping_cond.v
-reg clk_nf;
-reg resetm;
-reg reset2;
-// End of automatics
+wire clk_nf;
 
-
-always @(*) begin
-	clk_nf = ~clk_f; 
-end
-
+assign clk_nf = ~clk_f;
+wire reset0;
+reg reset1; // reset atrasado para paralelo_serial1
+assign reset0 = reset;  //para el template
+// FLOPS INICIALES
 always @(posedge clk_2f) begin
-resetm <= reset;
-	if (resetm == 1) begin
-		reset2 <= resetm;	
-	end 
-	else begin
-		reset2 <= 0;
-	end
-end 
+    if(reset == 0) begin
+        reset1 <= 0;
+    end
+    else    begin
+        reset1 <= reset0;  
+    end
+end
 
 /* Serie_Paralelo AUTO_TEMPLATE (
         .clk_8f          	(clk_8f),
         .clk_f           	(clk_f),
 		.data_in			(data_in_c_@),
-        .reset             	(reset),
+        .reset             	(reset@),
 		.valid_out_c		(valid_c_@_SP),
 		.parallel_out_c		(lane_c_@ [7:0])); */
+
 
 Serie_Paralelo  Serie_Paralelo_instance0( /*AUTOINST*/
 					 // Outputs
@@ -84,18 +81,18 @@ Serie_Paralelo  Serie_Paralelo_instance0( /*AUTOINST*/
 					 .clk_8f		(clk_8f),	 // Templated
 					 .clk_f			(clk_f),	 // Templated
 					 .data_in		(data_in_c_0),	 // Templated
-					 .reset			(reset));	 // Templated
+					 .reset			(reset0));	 // Templated
 
 Serie_Paralelo  Serie_Paralelo_instance1(
 					// Inputs
-					.reset			(reset2), 
+					.reset			(reset1), // reset 1
 					/*AUTOINST*/
 					 // Outputs
 					 .valid_out_c		(valid_c_1_SP),	 // Templated
 					 .parallel_out_c	(lane_c_1 [7:0]), // Templated
 					 // Inputs
 					 .clk_8f		(clk_8f),	 // Templated
-					 .clk_f			(clk_f),	 // Templated
+					 .clk_f			(clk_nf),	 // Templated
 					 .data_in		(data_in_c_1));	 // Templated
 					
 

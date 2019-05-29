@@ -130,17 +130,15 @@ ejecutar_yosys:
 	@yosys yosys_comandos.ys
 	@sed -i 's/module $(Nombre_archivo_conductual)/module $(Nombre_archivo_estructural)/g' $(Nombre_archivo_estructural).v
 	@sed  -i '1i `include "$(Nombre_archivo_lib_v)"' $(Nombre_archivo_estructural).v 
-	@sed -i 's/data_out_c/data_out_e/g' $(Nombre_archivo_estructural).v 
-	@sed -i 's/valid_out_c/valid_out_e/g' $(Nombre_archivo_estructural).v 
-	@sed -i 's/valid_c/valid_e/g' $(Nombre_archivo_estructural).v 
-	@sed -i 's/lane_c/lane_e/g' $(Nombre_archivo_estructural).v 
-	@sed -i 's/parallel_out_c/parallel_out_e/g' $(Nombre_archivo_estructural).v 
-	@sed -i 's/module demux/module demux_estr/g' $(Nombre_archivo_estructural).v 
-	@sed -i 's/module Serie_Paralelo/module Serie_Paralelo_estr/g' $(Nombre_archivo_estructural).v 
-	@sed -i 's/module Byte_un_striping_cond/module Byte_un_striping_estr/g' $(Nombre_archivo_estructural).v 
-	@sed -i 's/demux demux/demux_estr demux/g' $(Nombre_archivo_estructural).v 
-	@sed -i 's/Serie_Paralelo Serie/Serie_Paralelo_estr Serie/g' $(Nombre_archivo_estructural).v 
-	@sed -i 's/Byte_un_striping_cond Byte/Byte_un_striping_estr Byte/g' $(Nombre_archivo_estructural).v 
+	@sed -i 's/data_out_c_0/data_out_e_0/g' $(Nombre_archivo_estructural).v 
+	@sed -i 's/data_out_c_1/data_out_e_1/g' $(Nombre_archivo_estructural).v 
+	@sed -i 's/valid_out_c_0/valid_out_e_0/g' $(Nombre_archivo_estructural).v
+	@sed -i 's/valid_out_c_1/valid_out_e_1/g' $(Nombre_archivo_estructural).v
+	@sed -i 's/Serie_Paralelo/Serie_Paralelo_estr/g' $(Nombre_archivo_estructural).v
+	@sed -i 's/Byte_un_striping_cond/Byte_un_striping_estr/g' $(Nombre_archivo_estructural).v
+	@sed -i 's/demux/demux_estr/g' $(Nombre_archivo_estructural).v
+
+
 	
 
 Generacion: generar_archivos generar_archivo_yosys
