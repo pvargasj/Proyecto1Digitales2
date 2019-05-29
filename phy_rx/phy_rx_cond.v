@@ -9,36 +9,31 @@ module phy_rx_cond(
     input clk_2f,
     input clk_8f,
     input reset,
-	output [7:0] data_out_c_0,
-	output [7:0] data_out_c_1,
-    output valid_out_c_0,
-    output valid_out_c_1);
-
-/*
-reg [7:0] data_in_0_FF, data_in_1_FF;
-reg valid_in_0_FF, valid_in_1_FF;
+	output reg [7:0] data_out_c_0,
+	output reg [7:0] data_out_c_1,
+    output reg valid_out_c_0,
+    output reg valid_out_c_1);
 
 
-wire reset0;
-reg reset1; // reset atrasado para paralelo_serial1
-assign reset0 = reset;  //para el template
-// FLOPS INICIALES
+wire [7:0] data_out_c_0_aux, data_out_c_1_aux;
+wire valid_out_c_0_aux, valid_out_c_1_aux;
+
+
+// FLOPS Finales
 always @(posedge clk_2f) begin
     if(reset == 0) begin
-        data_in_0_FF <= 0;
-        data_in_1_FF <= 0;
-        valid_in_0_FF <= 0;
-        valid_in_1_FF <= 0;
-        reset1 <= 0;
+        data_out_c_0 <= 0;
+        data_out_c_1 <= 0;
+        valid_out_c_0 <= 0;
+        valid_out_c_1 <= 0;
     end
     else    begin
-        data_in_0_FF <= data_in_0_c;
-        data_in_1_FF <= data_in_1_c;
-        valid_in_0_FF <= valid_in_0_c; 
-        valid_in_1_FF <= valid_in_1_c;     
-        reset1 <= reset0;  
+        data_out_c_0 <= data_out_c_0_aux;
+        data_out_c_1 <= data_out_c_1_aux;
+        valid_out_c_0 <= valid_out_c_0_aux; 
+        valid_out_c_1 <= valid_out_c_1_aux;     
     end
-end */
+end 
 
 /*AUTOWIRE*/
 // Beginning of automatic wires (for undeclared instantiated-module outputs)
@@ -113,10 +108,10 @@ Byte_un_striping_cond  Byte_un_striping_instance0(
 
 demux  demux_cond_instance0( 
 		   // Outputs
-		   .data_out_0_c		(data_out_c_0[7:0]),
-		   .data_out_1_c		(data_out_c_1[7:0]),
-		   .valid_out_0_c		(valid_out_c_0),
-		   .valid_out_1_c		(valid_out_c_1),
+		   .data_out_0_c		(data_out_c_0_aux[7:0]),
+		   .data_out_1_c		(data_out_c_1_aux[7:0]),
+		   .valid_out_0_c		(valid_out_c_0_aux),
+		   .valid_out_1_c		(valid_out_c_1_aux),
 		   // Inputs
 		   .data_in_c			(data_out_c_US[7:0]),
 		   .valid_in_c			(valid_out_c_US),
