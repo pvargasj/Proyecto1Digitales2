@@ -3,9 +3,10 @@ module probador(
     output reg [7:0] data_in_1_c,
     output reg valid_in_0_c,
     output reg valid_in_1_c,
-    output reg clk_8f,
+    output reg clk_8f_prob,
     output reg resetCLK,
-    output reg reset
+    output reg reset,
+    input clk_8f
     //input Paral_serial_out_0_c, 
     //input Paral_serial_out_1_c,
     //input Paral_serial_out_0_e, 
@@ -16,7 +17,7 @@ module probador(
 initial begin
 	$dumpfile("banco_pruebas.vcd");
 	$dumpvars();
-    clk_8f = 0;
+    clk_8f_prob = 0;
 	reset = 0;
     resetCLK = 0;
     data_in_0_c = 0;
@@ -24,10 +25,11 @@ initial begin
     valid_in_0_c = 0;
     valid_in_1_c = 0;
 
+    @(posedge clk_8f_prob);
+    resetCLK <= 1;
     @(posedge clk_8f);
-    @(posedge clk_8f);
-    resetCLK = 1;
-    @(posedge clk_8f);
+    resetCLK <= 1;
+
     @(posedge clk_8f);
     @(posedge clk_8f);
     @(posedge clk_8f);
@@ -188,8 +190,8 @@ initial begin
     $finish;
 end
 
-    initial	clk_8f 	<= 1;				// Valor inicial al reloj, sino siempre ser� indeterminado
-	always	#2 clk_8f 	<= ~clk_8f;		// Hace "toggle" cada 2*10ns 
+    initial	clk_8f_prob 	<= 1;				// Valor inicial al reloj, sino siempre ser� indeterminado
+	always	#2 clk_8f_prob 	<= ~clk_8f_prob;		// Hace "toggle" cada 2*10ns 
 
 
  endmodule 

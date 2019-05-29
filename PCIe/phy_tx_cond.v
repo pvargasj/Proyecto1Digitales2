@@ -18,8 +18,17 @@ module phy_tx_cond(
 reg [7:0] data_in_0_FF, data_in_1_FF;
 reg valid_in_0_FF, valid_in_1_FF;
 
-
-wire reset0;
+/*
+reg reset0;
+always @(posedge clk_2f) begin
+    if(reset == 0) begin
+        reset0 <= 0;
+    end
+    else    begin  
+        reset0 <= reset;  
+    end
+end
+*/
 reg reset1; // reset atrasado para paralelo_serial1
 assign reset0 = reset;  //para el template
 // FLOPS INICIALES
