@@ -140,6 +140,8 @@ ejecutar_yosys:
 	@sed -i 's/Byte_un_striping_cond/Byte_un_striping_estr/g' $(Nombre_archivo_estructural).v 
 	@sed -i 's/phy_rx_cond/phy_rx_estr/g' $(Nombre_archivo_estructural).v 
 	@sed -i 's/phy_tx_cond/phy_tx_estr/g' $(Nombre_archivo_estructural).v 
+	@sed -i 's/clkgen/clkgen_estr/g' $(Nombre_archivo_estructural).v 
+	@sed -i 's/clk_2f_to_prob/clk_2f_to_prob_estr/g' $(Nombre_archivo_estructural).v 
 
 Generacion: generar_archivos generar_archivo_yosys
 
