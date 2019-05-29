@@ -1,0 +1,25 @@
+`timescale 	1ns				/ 100ps
+
+`include "PCIe_cond.v" 	   
+`include "PCIe_estr.v" 	   
+`include "probador.v"
+ 	   
+module banco_pruebas; 
+ 	   
+/*AUTOWIRE*/
+ 	   
+PCIe_cond  PCIe_cond_instance( /*AUTOINST*/
+			      // Inputs
+			      .data_in_0_c	(data_in_0_c[7:0]),
+			      .data_in_1_c	(data_in_1_c[7:0]),
+			      .valid_in_0_c	(valid_in_0_c),
+			      .valid_in_1_c	(valid_in_1_c),
+			      .clk_8f		(clk_8f),
+			      .resetCLK		(resetCLK),
+			      .reset		(reset));
+ 	   
+PCIe_estr  PCIe_estr_instance( /*AUTOINST*/);
+ 	   
+probador  probador_inst( /*AUTOINST*/);
+ 	   
+endmodule
