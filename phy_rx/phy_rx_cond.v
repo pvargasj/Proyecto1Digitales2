@@ -48,7 +48,25 @@ wire [7:0]		lane_c_1;		// From Serie_Paralelo_instance1 of Serie_Paralelo.v
 wire			valid_c_0_SP;		// From Serie_Paralelo_instance0 of Serie_Paralelo.v
 wire			valid_c_1_SP;		// From Serie_Paralelo_instance1 of Serie_Paralelo.v
 wire			valid_out_c_US;		// From Byte_un_striping_instance0 of Byte_un_striping_cond.v
+reg clk_nf;
+reg resetm;
+reg reset2;
 // End of automatics
+
+
+always @(*) begin
+	clk_nf = ~clk_f; 
+end
+
+always @(posedge clk_2f) begin
+resetm <= reset;
+	if (resetm == 1) begin
+		reset2 <= resetm;	
+	end 
+	else begin
+		reset2 <= 0;
+	end
+end 
 
 /* Serie_Paralelo AUTO_TEMPLATE (
         .clk_8f          	(clk_8f),
@@ -68,15 +86,18 @@ Serie_Paralelo  Serie_Paralelo_instance0( /*AUTOINST*/
 					 .data_in		(data_in_c_0),	 // Templated
 					 .reset			(reset));	 // Templated
 
-Serie_Paralelo  Serie_Paralelo_instance1( /*AUTOINST*/
+Serie_Paralelo  Serie_Paralelo_instance1(
+					// Inputs
+					.reset			(reset2), 
+					/*AUTOINST*/
 					 // Outputs
 					 .valid_out_c		(valid_c_1_SP),	 // Templated
 					 .parallel_out_c	(lane_c_1 [7:0]), // Templated
 					 // Inputs
 					 .clk_8f		(clk_8f),	 // Templated
 					 .clk_f			(clk_f),	 // Templated
-					 .data_in		(data_in_c_1),	 // Templated
-					 .reset			(reset));	 // Templated
+					 .data_in		(data_in_c_1));	 // Templated
+					
 
 Byte_un_striping_cond  Byte_un_striping_instance0( 
 					    // Outputs
@@ -102,11 +123,11 @@ demux  demux_cond_instance0(
 		   // Inputs
 		   .data_in_c			(data_out_c_US[7:0]),
 		   .valid_in_c			(valid_out_c_US),
+		   .clk2f		(clk_2f),
+		   .clk8f		(clk_8f),
 		   /*AUTOINST*/
 			    // Inputs
-			    .reset		(reset),
-			    .clk2f		(clk2f),
-			    .clk8f		(clk8f));
+			    .reset		(reset));
 		   
 endmodule 
 

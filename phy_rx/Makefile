@@ -9,7 +9,7 @@ Archivo_compilar_nombre := banco_pruebas
 Nombre_Informe_PDF := Tarea_7_digitalesII_B56074.pdf
 
 #NOMBRE DEL ARCHIVO DEL MODULO CONDUCTUAL, EL QUE SE EJECUTARA CON YOSYS
-Nombre_archivo_conductual := phyr_rx_cond
+Nombre_archivo_conductual := phy_rx_cond
 
 #NOMBRE DEL ARCHIVO ESTRUCTURAL
 Nombre_archivo_estructural := phy_rx_estr
@@ -132,10 +132,16 @@ ejecutar_yosys:
 	@sed  -i '1i `include "$(Nombre_archivo_lib_v)"' $(Nombre_archivo_estructural).v 
 	@sed -i 's/data_out_c/data_out_e/g' $(Nombre_archivo_estructural).v 
 	@sed -i 's/valid_out_c/valid_out_e/g' $(Nombre_archivo_estructural).v 
-	@sed -i 's/demux_cond/demux_estr/g' $(Nombre_archivo_estructural).v 
-	@sed -i 's/Serie_Paralelo/Serie_Paralelo_estr/g' $(Nombre_archivo_estructural).v 
-	@sed -i 's/Byte_un_striping_cond/Byte_un_striping_estr/g' $(Nombre_archivo_estructural).v 
-
+	@sed -i 's/valid_c/valid_e/g' $(Nombre_archivo_estructural).v 
+	@sed -i 's/lane_c/lane_e/g' $(Nombre_archivo_estructural).v 
+	@sed -i 's/parallel_out_c/parallel_out_e/g' $(Nombre_archivo_estructural).v 
+	@sed -i 's/module demux/module demux_estr/g' $(Nombre_archivo_estructural).v 
+	@sed -i 's/module Serie_Paralelo/module Serie_Paralelo_estr/g' $(Nombre_archivo_estructural).v 
+	@sed -i 's/module Byte_un_striping_cond/module Byte_un_striping_estr/g' $(Nombre_archivo_estructural).v 
+	@sed -i 's/demux demux/demux_estr demux/g' $(Nombre_archivo_estructural).v 
+	@sed -i 's/Serie_Paralelo Serie/Serie_Paralelo_estr Serie/g' $(Nombre_archivo_estructural).v 
+	@sed -i 's/Byte_un_striping_cond Byte/Byte_un_striping_estr Byte/g' $(Nombre_archivo_estructural).v 
+	
 
 Generacion: generar_archivos generar_archivo_yosys
 

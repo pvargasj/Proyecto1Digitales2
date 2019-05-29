@@ -89,7 +89,7 @@ module demux(
                 nxt_st = TRANS_0;
             end
 
-            //default: nxt_st = RESET;
+            default: nxt_st = RESET;
         endcase
     end
 

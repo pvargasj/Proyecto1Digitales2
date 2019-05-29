@@ -69,6 +69,7 @@ always @(*) begin
                 prox_estado = ESPERANDO_ENTRADA;
             end                
         end
+        default: prox_estado = ESPERANDO_ENTRADA;
     endcase
 end
 

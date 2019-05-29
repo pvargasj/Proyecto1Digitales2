@@ -1,4 +1,3 @@
-`include "cmos.v"
 
 module Serie_Paralelo(input  clk_8f,
                       input  clk_f,
