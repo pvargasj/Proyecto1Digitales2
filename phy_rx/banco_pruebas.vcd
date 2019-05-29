@@ -1,0 +1,859 @@
+$date
+	Tue May 28 18:23:01 2019
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	100ps
+$end
+$scope module BUF $end
+$var wire 1 ! A $end
+$var wire 1 " Y $end
+$upscope $end
+$scope module DFF $end
+$var wire 1 # C $end
+$var wire 1 $ D $end
+$var reg 1 % Q $end
+$upscope $end
+$scope module DFFSR $end
+$var wire 1 & C $end
+$var wire 1 ' D $end
+$var wire 1 ( R $end
+$var wire 1 ) S $end
+$var reg 1 * Q $end
+$upscope $end
+$scope module NAND $end
+$var wire 1 + A $end
+$var wire 1 , B $end
+$var wire 1 - Y $end
+$upscope $end
+$scope module NOR $end
+$var wire 1 . A $end
+$var wire 1 / B $end
+$var wire 1 0 Y $end
+$upscope $end
+$scope module NOT $end
+$var wire 1 1 A $end
+$var wire 1 2 Y $end
+$upscope $end
+$scope module banco_pruebas $end
+$var wire 1 3 valid_in_c_0 $end
+$var wire 1 4 valid_in_c_1 $end
+$var wire 1 5 valid_out_c_1 $end
+$var wire 1 6 valid_out_c_0 $end
+$var wire 1 7 reset $end
+$var wire 8 8 data_out_c_1 [7:0] $end
+$var wire 8 9 data_out_c_0 [7:0] $end
+$var wire 1 : data_in_c_1 $end
+$var wire 1 ; data_in_c_0 $end
+$var wire 1 < clk_f $end
+$var wire 1 = clk_8f $end
+$var wire 1 > clk_2f $end
+$scope module phy_tx_cond_instance $end
+$var wire 1 ? clk2f $end
+$var wire 1 @ clk8f $end
+$var wire 1 A valid_out_c_US $end
+$var wire 1 5 valid_out_c_1 $end
+$var wire 1 6 valid_out_c_0 $end
+$var wire 1 B valid_c_1_SP $end
+$var wire 1 C valid_c_0_SP $end
+$var wire 1 7 reset $end
+$var wire 8 D lane_c_1 [7:0] $end
+$var wire 8 E lane_c_0 [7:0] $end
+$var wire 8 F data_out_c_US [7:0] $end
+$var wire 8 G data_out_c_1 [7:0] $end
+$var wire 8 H data_out_c_0 [7:0] $end
+$var wire 1 : data_in_c_1 $end
+$var wire 1 ; data_in_c_0 $end
+$var wire 1 < clk_f $end
+$var wire 1 = clk_8f $end
+$var wire 1 > clk_2f $end
+$scope module Byte_un_striping_instance0 $end
+$var wire 1 B valid_1 $end
+$var wire 1 C valid_0 $end
+$var wire 1 7 reset $end
+$var wire 8 I lane_1 [7:0] $end
+$var wire 8 J lane_0 [7:0] $end
+$var wire 1 < clk_f $end
+$var wire 1 > clk_2f $end
+$var reg 8 K data_out_c [7:0] $end
+$var reg 3 L estado [2:0] $end
+$var reg 3 M prox_estado [2:0] $end
+$var reg 1 A valid_out_c $end
+$upscope $end
+$scope module Serie_Paralelo_instance0 $end
+$var wire 1 7 reset $end
+$var wire 1 ; data_in $end
+$var wire 1 < clk_f $end
+$var wire 1 = clk_8f $end
+$var reg 3 N BC_counter [2:0] $end
+$var reg 8 O Data_P [7:0] $end
+$var reg 1 P active $end
+$var reg 3 Q bit_counter [2:0] $end
+$var reg 8 R parallel_out_c [7:0] $end
+$var reg 1 C valid_out_c $end
+$upscope $end
+$scope module Serie_Paralelo_instance1 $end
+$var wire 1 7 reset $end
+$var wire 1 : data_in $end
+$var wire 1 < clk_f $end
+$var wire 1 = clk_8f $end
+$var reg 3 S BC_counter [2:0] $end
+$var reg 8 T Data_P [7:0] $end
+$var reg 1 U active $end
+$var reg 3 V bit_counter [2:0] $end
+$var reg 8 W parallel_out_c [7:0] $end
+$var reg 1 B valid_out_c $end
+$upscope $end
+$scope module demux_cond_instance0 $end
+$var wire 1 ? clk2f $end
+$var wire 1 @ clk8f $end
+$var wire 8 X data_in_c [7:0] $end
+$var wire 1 A valid_in_c $end
+$var wire 1 7 reset $end
+$var reg 8 Y data_out_0_c [7:0] $end
+$var reg 8 Z data_out_1_c [7:0] $end
+$var reg 6 [ nxt_st [5:0] $end
+$var reg 1 \ reset2 $end
+$var reg 1 ] resetm $end
+$var reg 6 ^ st [5:0] $end
+$var reg 1 6 valid_out_0_c $end
+$var reg 1 5 valid_out_1_c $end
+$upscope $end
+$upscope $end
+$scope module probador_inst $end
+$var wire 8 _ data_out_c_0 [7:0] $end
+$var wire 8 ` data_out_c_1 [7:0] $end
+$var wire 1 3 valid_in_c_0 $end
+$var wire 1 4 valid_in_c_1 $end
+$var reg 1 > clk_2f $end
+$var reg 1 = clk_8f $end
+$var reg 1 < clk_f $end
+$var reg 1 ; data_in_c_0 $end
+$var reg 1 : data_in_c_1 $end
+$var reg 1 7 reset $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+b0 `
+b0 _
+bx ^
+x]
+x\
+bx [
+b0 Z
+b0 Y
+b0 X
+bx W
+bx V
+xU
+bx T
+bx S
+bx R
+bx Q
+xP
+bx O
+bx N
+bx M
+bx L
+b0 K
+bx J
+bx I
+b0 H
+b0 G
+b0 F
+bx E
+bx D
+xC
+xB
+0A
+z@
+z?
+0>
+0=
+0<
+0;
+0:
+b0 9
+b0 8
+07
+06
+05
+z4
+z3
+z2
+z1
+x0
+z/
+z.
+x-
+z,
+z+
+x*
+z)
+z(
+z'
+z&
+x%
+z$
+z#
+z"
+z!
+$end
+#20
+b0 E
+b0 J
+b0 R
+0C
+b0 D
+b0 I
+b0 W
+0B
+1>
+1<
+17
+0P
+0U
+b0 N
+b0 O
+b111 Q
+b0 S
+b0 T
+b111 V
+1:
+1;
+1=
+#40
+0=
+#60
+b110 V
+b10000000 T
+b110 Q
+b10000000 O
+0;
+1=
+#80
+0=
+#100
+b101 Q
+b11000000 O
+b101 V
+0>
+0:
+1;
+1=
+#120
+0=
+#140
+b100 V
+b100 Q
+b11100000 O
+1=
+#160
+0=
+#180
+b11 Q
+b11110000 O
+b11 V
+b10010000 T
+1>
+0<
+1:
+1=
+#200
+0=
+#220
+b10 V
+b10011000 T
+b10 Q
+b11111000 O
+0:
+1=
+#240
+0=
+#260
+b1 Q
+b1 V
+b10011100 T
+0>
+1:
+0;
+1=
+#280
+0=
+#300
+b0 V
+b10011110 T
+b0 Q
+1=
+#320
+0=
+#340
+b111 Q
+b11111001 O
+b111 V
+b10011111 T
+1>
+1<
+1;
+1=
+#360
+0=
+#380
+b110 V
+b110 Q
+0;
+1=
+#400
+0=
+#420
+b101 Q
+b101 V
+0>
+0:
+1;
+1=
+#440
+0=
+#460
+b100 V
+b100 Q
+1=
+#480
+0=
+#500
+b11 Q
+b11 V
+1>
+0<
+1:
+1=
+#520
+0=
+#540
+b10 V
+b10 Q
+0:
+1=
+#560
+0=
+#580
+b1 Q
+b1 V
+0>
+1:
+0;
+1=
+#600
+0=
+#620
+b0 V
+b0 Q
+1=
+#640
+0=
+#660
+b111 Q
+b111 V
+1>
+1<
+1;
+1=
+#680
+0=
+#700
+b110 V
+b110 Q
+0;
+1=
+#720
+0=
+#740
+b101 Q
+b101 V
+0>
+0:
+1;
+1=
+#760
+0=
+#780
+b100 V
+b100 Q
+1=
+#800
+0=
+#820
+b11 Q
+b11 V
+1>
+0<
+1:
+1=
+#840
+0=
+#860
+b10 V
+b10 Q
+0:
+1=
+#880
+0=
+#900
+b1 Q
+b1 V
+0>
+1:
+0;
+1=
+#920
+0=
+#940
+b0 V
+b0 Q
+1=
+#960
+0=
+#980
+b111 Q
+b111 V
+1>
+1<
+1;
+1=
+#1000
+0=
+#1020
+b110 V
+b110 Q
+0;
+1=
+#1040
+0=
+#1060
+b101 Q
+b101 V
+0>
+0:
+1;
+1=
+#1080
+0=
+#1100
+b100 V
+b100 Q
+1=
+#1120
+0=
+#1140
+b11 Q
+b11 V
+1>
+0<
+1:
+1=
+#1160
+0=
+#1180
+b10 V
+b10 Q
+0:
+1=
+#1200
+0=
+#1220
+b1 Q
+b1 V
+0>
+1:
+0;
+1=
+#1240
+0=
+#1260
+b0 V
+b0 Q
+1=
+#1280
+0=
+#1300
+b111 Q
+b111 V
+1>
+1<
+1;
+1=
+#1320
+0=
+#1340
+b110 V
+b110 Q
+1=
+#1360
+0=
+#1380
+b101 Q
+b101 V
+0>
+0:
+1=
+#1400
+0=
+#1420
+b100 V
+b100 Q
+1=
+#1440
+0=
+#1460
+b11 Q
+b11 V
+1>
+0<
+1:
+1=
+#1480
+0=
+#1500
+b10 V
+b10 Q
+1=
+#1520
+0=
+#1540
+b1 Q
+b11111101 O
+b1 V
+0>
+1=
+#1560
+0=
+#1580
+b0 V
+b0 Q
+b11111111 O
+0:
+1=
+#1600
+0=
+#1620
+b111 Q
+b11111110 O
+b111 V
+1>
+1<
+1:
+0;
+1=
+#1640
+0=
+#1660
+b110 V
+b110 Q
+b1111110 O
+1=
+#1680
+0=
+#1700
+b101 Q
+b111110 O
+b101 V
+b11011111 T
+0>
+1=
+#1720
+0=
+#1740
+b100 V
+b11111111 T
+b100 Q
+b11110 O
+0:
+1;
+1=
+#1760
+0=
+#1780
+b11 Q
+b1110 O
+b11 V
+b11101111 T
+1>
+0<
+0;
+1=
+#1800
+0=
+#1820
+b10 V
+b11100111 T
+b10 Q
+b110 O
+1:
+1=
+#1840
+0=
+#1860
+b1 Q
+b10 O
+b1 V
+b11100011 T
+0>
+0:
+1=
+#1880
+0=
+#1900
+b0 V
+b11100001 T
+b0 Q
+b0 O
+1:
+1;
+1=
+#1920
+0=
+#1940
+b111 Q
+b1 O
+b111 V
+b11100000 T
+1>
+1<
+0:
+1=
+#1960
+0=
+#1980
+b110 V
+b1100000 T
+b110 Q
+b10000001 O
+1:
+0;
+1=
+#2000
+0=
+#2020
+b101 Q
+b11000001 O
+b101 V
+b100000 T
+0>
+0:
+1;
+1=
+#2040
+0=
+#2060
+b100 V
+b0 T
+b100 Q
+b11100001 O
+1:
+1=
+#2080
+0=
+#2100
+b11 Q
+b11110001 O
+b11 V
+b10000 T
+1>
+0<
+1=
+#2120
+0=
+#2140
+b10 V
+b11000 T
+b10 Q
+b11111001 O
+0:
+1=
+#2160
+0=
+#2180
+b1 Q
+b1 V
+b11100 T
+0>
+1:
+0;
+1=
+#2200
+0=
+#2220
+b0 V
+b11110 T
+b0 Q
+1=
+#2240
+0=
+#2260
+b111 Q
+b111 V
+b11111 T
+1>
+1<
+1;
+1=
+#2280
+0=
+#2300
+b110 V
+b10011111 T
+b110 Q
+0;
+1=
+#2320
+0=
+#2340
+b101 Q
+b101 V
+0>
+0:
+1;
+1=
+#2360
+0=
+#2380
+b100 V
+b100 Q
+0;
+1=
+#2400
+0=
+#2420
+b11 Q
+b11101001 O
+b11 V
+b10001111 T
+1>
+0<
+1=
+#2440
+0=
+#2460
+b10 V
+b10000111 T
+b10 Q
+b11100001 O
+1:
+1=
+#2480
+0=
+#2500
+b1 Q
+b11100101 O
+b1 V
+b10000011 T
+0>
+0:
+1;
+1=
+#2520
+0=
+#2540
+b0 V
+b10000001 T
+b0 Q
+b11100111 O
+1=
+#2560
+0=
+#2580
+b111 Q
+b111 V
+b10000000 T
+1>
+1<
+1=
+#2600
+0=
+#2620
+b110 V
+b0 T
+b110 Q
+1:
+0;
+1=
+#2640
+0=
+#2660
+b101 Q
+b101 V
+0>
+0:
+1;
+1=
+#2680
+0=
+#2700
+b100 V
+b100 Q
+1=
+#2720
+0=
+#2740
+b11 Q
+b11110111 O
+b11 V
+b10000 T
+1>
+0<
+1:
+1=
+#2760
+0=
+#2780
+b10 V
+b11000 T
+b10 Q
+b11111111 O
+0:
+1=
+#2800
+0=
+#2820
+b1 Q
+b11111011 O
+b1 V
+b11100 T
+0>
+1:
+0;
+1=
+#2840
+0=
+#2860
+b0 V
+b11110 T
+b0 Q
+b11111001 O
+07
+1=
+#2880
+0=
+#2900
+b0 O
+b111 Q
+b0 T
+b111 V
+1=
+#2920
+0=
+#2940
+1=
+#2960
+0=
+#2980
+1=
+#3000
+0=
+#3020
+1=
+#3030
