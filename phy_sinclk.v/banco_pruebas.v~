@@ -1,0 +1,18 @@
+`timescale 	1ns				/ 100ps
+
+
+`include "phy_cond.v"
+//`include "phy_estr.v" 	   
+`include "probador.v"
+ 	   
+module banco_pruebas; 
+ 	   
+/*AUTOWIRE*/
+ 	   
+phy_cond  phy_cond_instance( /*AUTOINST*/);
+ 	   
+//phy_estr  phy_estr_instance( /*AUTOINST*/);
+ 	   
+probador  probador_inst( /*AUTOINST*/);
+ 	   
+endmodule
