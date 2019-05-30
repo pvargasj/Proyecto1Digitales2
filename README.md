@@ -1,6 +1,12 @@
 # Proyecto I IE523 Diseño de la capa PHY de la interfaz PCIe - Yeison Rodriguez B56074 - Pablo Vargas B57564 - Luis Soto B57082
 
 ## NOTA PARA EL PROFESOR
+El módulo phy se encuentra en la carpeta Modulo_Phy, para ejecutar simplemente ejecute los siguientes comandos:
+```
+>> cd Modulo_Phy
+>> make
+```
+Inmedi
 
 
 ## Compilación y ejecución
