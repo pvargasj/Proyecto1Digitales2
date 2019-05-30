@@ -1,5 +1,8 @@
 # Proyecto I IE523 Diseño de la capa PHY de la interfaz PCIe - Yeison Rodriguez B56074 - Pablo Vargas B57564 - Luis Soto B57082
 
+## NOTA PARA EL PROFESOR
+
+
 ## Compilación y ejecución
 Para compilar y ejecutar simplemente ejecute el siguiente comando en las carpetas que contienen los Makefile
 ```
@@ -59,7 +62,22 @@ Los problemas que se tuvieron fueron los siguientes:
 3. ...
 
 ### Avance 3: 29de mayo, 17:00
+Para este avance se suguió nuevamente el plan de trabajo propuesto para entregas anteriores. Los módulos fueron subidos al repositorio de GIT. Las reuniones siguen siendo de manera virtual y todos los integrantes del grupo siguen trabajando de manera equitativa
 
+A continuacón se pesentan las tareas que realizó cada estudiante para este avance
+
+Luis Soto: Aporte en creación de módulos Phy_rx y Phy. 
+El trabajo de este integrante fue realizado entre los días XXXX y ZZZZ del mes de Mayo
+
+Pablo Vargas:  Aporte en creación de módulos Phy_rx y Phy. 
+El trabajo de este integrante fue realizado entre los días XXXX y ZZZZ del mes de Mayo
+
+Yeison Rodríguez: Aporte en creación de módulos Phy_rx y Phy. 
+El trabajo de este integrante fue realizado entre los días 23 y 29 del mes de Mayo
+
+Los problemas que se tuvieron fueron los siguientes:
+1. Problemas a la hora de conectar el módulo Phy_Rx debido a sincronización de los módulos
+2. Problemas a la hora de conectar el módulo Phy para realizar la sincronización entre los relojes.
 ### Avance 4: 1° de junio, 08:00
 
 ### Presentación final: 5dejunio, 17:00

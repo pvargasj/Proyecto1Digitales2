@@ -85,6 +85,7 @@ initial begin
     data_in_1_c <= 8'h 03 ; 
     @(posedge clk_2f_to_prob);
     
+    @(posedge clk_2f_to_prob);
     
     valid_in_0_c <= 1;
     data_in_1_c <= 8'h 04 ; 
@@ -95,6 +96,8 @@ initial begin
     valid_in_1_c <= 0;
     @(posedge clk_2f_to_prob);
     
+    
+    @(posedge clk_2f_to_prob);
     
     @(posedge clk_2f_to_prob);
     
@@ -145,10 +148,10 @@ initial begin
      @(posedge clk_2f_to_prob); 
     
 
+    
+    @(posedge clk_2f_to_prob); 
     reset <= 0;
     @(posedge clk_2f_to_prob); 
-    
-    
 
     $finish;
 end  
