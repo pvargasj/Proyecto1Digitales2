@@ -1,20 +1,10 @@
-# Proyecto I IE523 Diseño de la capa PHY de la interfaz PCIe - Yeison Rodriguez B56074 - Pablo Vargas B57564 - Luis Soto B57082
+# Proyecto II IE523 Capa de transacción PCIE adaptada y lógica de conmutación - Yeison Rodriguez B56074 - Pablo Vargas B57564 - Luis Soto B57082
 
 ## NOTA PARA EL PROFESOR
-El módulo phy se encuentra en la carpeta Modulo_Phy, para ejecutar simplemente ejecute los siguientes comandos:
-```
->> cd Modulo_Phy
->> make
-```
-Inmedi
 
 
 ## Compilación y ejecución
-Para compilar y ejecutar simplemente ejecute el siguiente comando en las carpetas que contienen los Makefile
-```
->> make
-```
-Inmediatamente se mostrará una simulación en el programa Gtkwave de las formas de onda
+
 
 ## Bitácora
 ### Avance 1: 15de mayo, 17:00
@@ -48,46 +38,10 @@ Los problemas que se tuvieron fueron los siguientes:
 
 
 ### Avance 2: 22 de mayo, 17:00
-Para este avance se siguió codificando según lo planeado en el plan de trabajo durante toda la semana. Cada vez que un integrante termina un módulo es subido a git para que los demás puedan realizar revisiones. Las reuniones siguen siendo virtuales ya que es más cómodo y no ha sido necesaria una reunión física.
-
-A continuacón se pesentan las tareas que realizó cada estudiante para este avance
-
-Luis Soto: Revisión de módulos de los compañeros. 
-El trabajo de este integrante fue realizado entre los días 17 y 22 del mes de Mayo
-
-Pablo Vargas: Módulo de serial a paralelo y revisión de módulos de los compañeros
-El trabajo de este integrante fue realizado entre los días 17 y 22 del mes de Mayo
-
-Yeison Rodríguez: Modulos: Byte striping, Byte un striping y phy_tx. También revisión de módulos de los compañeros
-El trabajo de este integrante fue realizado entre los días 17 y 22 del mes de Mayo
- 
-
-Los problemas que se tuvieron fueron los siguientes:
-1. Problemas a la hora de conectar el módulo phy_tx ya que se tuvo dificultades a la hora de sincronizar el funcionamiento de todos los elementos
-2. El módulo byte_un_triping parecía funcionar de manera correcta pero al ingresar paquetes de datos que no eran múltiplos de 2 se tenían problemas, por lo que se tuvo que hacer un nuevo diseño a partir de una máquina de estados.
-
 
 ### Avance 3: 29 de mayo, 17:00
-Para este avance se suguió nuevamente el plan de trabajo propuesto para entregas anteriores. Los módulos fueron subidos al repositorio de GIT. Las reuniones siguen siendo de manera virtual y todos los integrantes del grupo siguen trabajando de manera equitativa
 
-A continuacón se pesentan las tareas que realizó cada estudiante para este avance
-
-Luis Soto: Aporte en creación de módulos Phy_rx y Phy. 
-El trabajo de este integrante fue realizado entre los días 23 y 29 del mes de Mayo
-
-Pablo Vargas:  Aporte en creación de módulos Phy_rx y Phy. 
-El trabajo de este integrante fue realizado entre los días 23 y 29 del mes de Mayo
-
-Yeison Rodríguez: Aporte en creación de módulos Phy_rx y Phy. 
-El trabajo de este integrante fue realizado entre los días 23 y 29 del mes de Mayo
-
-Los problemas que se tuvieron fueron los siguientes:
-1. Problemas a la hora de conectar el módulo Phy_Rx debido a sincronización de los módulos
-2. Problemas a la hora de conectar el módulo Phy para realizar la sincronización entre los relojes.
 ### Avance 4: 1° de junio, 08:00
-
-Para este avance simplemente se realizó el informe del proyecto entre todos los integrantes. No se presentó ningún problema
-
 
 ### Presentación final: 5 de junio, 17:00
 
