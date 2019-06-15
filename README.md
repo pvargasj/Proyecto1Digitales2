@@ -7,7 +7,7 @@
 
 
 ## Bitácora
-### Avance 1: 15de mayo, 17:00
+### Avance 1: 19 de junio, 17:00
 Para este avance se decidió que Luis Soto iba a trabajar más módulos ya que se ofreció porque tenía
 más tiempo libre que los demás integrantes del grupo. Pero lo establecido es que en el recuento final
 del proyecto todos tengamos una participación equivalente.
@@ -37,13 +37,13 @@ Los problemas que se tuvieron fueron los siguientes:
 
 
 
-### Avance 2: 22 de mayo, 17:00
+### Avance 2: 26 de junio, 17:00
 
-### Avance 3: 29 de mayo, 17:00
+### Avance 3: 3 de julio, 17:00
 
-### Avance 4: 1° de junio, 08:00
+### Avance 4: 6 de julio, 08:00
 
-### Presentación final: 5 de junio, 17:00
+### Presentación final: 10 de julio, 17:00
 
 
 
