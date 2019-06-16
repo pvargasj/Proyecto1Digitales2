@@ -1,24 +1,183 @@
 
+`include "RAM_c.v"
+
 `ifndef FIFO_C      //-- Para no tener problemas con los include, si el
  `define FIFO_C     //   modulo fifo_c ya estaba definido ignora el codigo
 
 
 module fifo_c #(
     parameter AW = 3,   //-- Cantidad de bits de direcciones (Adress width)
-    parameter DW = 6)   //-- Cantidad de bits de datos (Data width) (ES FIJO 6 SIEMPRE)
-    (  
-    input [DW-1: 0] data_in,          //-- Entrada del FIFO de 6 bits
-    input pop,                        //-- 1 si se quiere hacer pop, 0 nada
-    input push,                       //-- 1 si se quiere hacer push, 0 nada
-    input [3:0] umbral_casi_lleno,    //-- Umbral de que el FIFO esta casi lleno
-    input [3:0] umbral_casi_vacio,    //-- Umbral de que el FIFO esta casi lleno
-    output reg [DW-1: 0] data_out_c,  //-- Salida del FIFO
-    output reg valid_out_c,           //-- es 1 cuando la salida del FIFO es un dato valido
-    output reg almost_full_c,         //-- Parte del flow control, 1 para pedir una pausa, 0 no hace nada
-    output reg almost_empty_c,        //-- Parte del flow control, 1 para pedir un continuar y poner en 0 almost_full_c, 0 no hace nada
+    parameter DW = 8)   //-- Cantidad de bits de datos (Data width) (ES FIJO 6 SIEMPRE)
+    ( 
+    input clk,                        //-- clock 
+    input reset,                      //-- Reset 
+    input [DW-1: 0] data_in,          //-- Entrada del FIFO de 6 bits 
+    input pop,                        //-- 1 si se quiere hacer pop, 0 nada 
+    input push,                       //-- 1 si se quiere hacer push, 0 nada 
+    input [3:0] umbral_almost_full,   //-- Umbral de que el FIFO esta casi lleno
+    input [3:0] umbral_almost_empty,  //-- Umbral de que el FIFO esta casi lleno
+    output [DW-1: 0] data_out_c,      //-- Salida del FIFO 
+    output reg valid_out_c,           //-- es 1 cuando la salida del FIFO es un dato valido 
+    output reg almost_empty_full_c,   //-- 0 si esta casi vacio (aun le cabe), 1 si esta casi lleno (casi no le cabe)
     output reg fifo_empty_c,          //-- Entrada de la maquina de estados, Es 1 si el FIFO esta vacio, 0 en caso contrario
     output reg error_c                //--Entrada de la maquina de estados, Es 1 solo si se pide hacer un push y el fifo estaba lleno o si se pide pop y el FIFO estaba vacio
     );
+
+
+    //--PARAMETROS:
+    localparam max_size_of_addr = 2 ** AW;  //-- Cantidad maxima de direcciones
+
+    //--SEÑALES INTERNAS:
+    reg [AW-1: 0] wr_ptr, rd_ptr;           //-- Punteros de escritura y lectura
+    reg [AW-1: 0] addr;
+    wire rw;        //-- 0 read 1 write
+
+    //--------------- LOGICA DE POP Y PUSH DEL FIFO--------------------
+    always @(posedge clk) begin
+        if (reset == 0) begin
+            wr_ptr <= 0;
+            rd_ptr <= 0;
+        end
+        if (reset == 1) begin
+            //-- caso push
+            if (push == 1) begin
+                wr_ptr <= wr_ptr + 1; //-- si hay un push aumenta el puntero de escritura
+            end
+            //-- caso pop
+            if (pop == 1) begin
+                rd_ptr <= rd_ptr + 1; //-- si hay un pop aumenta el puntero de lectura
+            end
+        end
+    end
+   
+    always @(*) begin
+        addr = 0;
+        valid_out_c = 0;
+        if (push == 1) begin    //-- Si se solicita push, pone el addr en escritura 
+            addr = wr_ptr;
+        end
+        if (pop == 1) begin     //-- Si se solicita push, pone el addr en lectura y activa valid out
+            addr = rd_ptr; 
+            valid_out_c = 1;
+        end
+    end
+
+    RAM_c RAM_c_instance0 (
+               // Inputs
+               .rw			(push),
+			   /*AUTOINST*/
+			   // Outputs
+			   .data_out_c		(data_out_c[DW-1:0]),
+			   // Inputs
+			   .clk			(clk),
+			   .reset		(reset),
+			   .addr		(addr[AW-1:0]),
+			   .data_in		(data_in[DW-1:0]));
+
+
+    //------------------------- LOGICA DE FLOW CONTROL---------------------------------
+
+    //--SEÑALES INTERNAS:
+    reg [4:0] estado;
+    reg [4:0] estado_proximo;
+
+    //--ESTADOS:
+    parameter [4:0] RESET = 5'b00001, 
+                    FIFO_VACIO = 5'b00010, 
+                    CONTINUAR = 5'b00100, 
+                    PAUSA = 5'b01000, 
+                    ERROR =  5'b10000;
+    always @(posedge clk) begin
+        if (reset == 0) begin
+            estado <= RESET;
+        end
+        if (reset == 1) begin
+            estado <= estado_proximo;    
+        end
+    end
+
+    always @(*) begin
+        estado_proximo = estado;
+        almost_empty_full_c = 0;
+        fifo_empty_c = 0;
+        error_c = 0;
+        case (estado)
+                
+            RESET: begin
+                fifo_empty_c = 1;
+                if (reset == 1) begin
+                    estado_proximo = FIFO_VACIO;
+                end
+            end
+            
+            FIFO_VACIO: begin //-- Estado que esta listo para recibir push pero no pops
+                estado_proximo = FIFO_VACIO;
+                fifo_empty_c = 1;
+                if (pop == 1) begin
+                    estado_proximo = ERROR;
+                end
+                if (push == 1) begin
+                    estado_proximo = CONTINUAR;
+                end
+            end         
+
+            CONTINUAR: begin    //-- Estado que esta listo para recibir pop o push
+                estado_proximo = CONTINUAR;
+                if (wr_ptr > rd_ptr ) begin //-- Caso I de los punteros 
+                    if (wr_ptr - rd_ptr >= umbral_almost_full) begin //-- Si el FIFO tiene mas datos que los permitidos por el umbral
+                        almost_empty_full_c = 1;
+                        estado_proximo = PAUSA;
+                    end
+                end
+                if (wr_ptr < rd_ptr ) begin //-- Caso II de los punteros 
+                    if (max_size_of_addr - (rd_ptr - wr_ptr) >= umbral_almost_full) begin //-- Si el FIFO tiene mas datos que los permitidos por el umbral
+                        almost_empty_full_c = 1;
+                        estado_proximo = PAUSA;
+                    end                    
+                end
+                if (wr_ptr == rd_ptr ) begin //-- Caso III de los punteros 
+                    fifo_empty_c = 1;
+                    if (pop == 1) begin //-- Si se hace un pop y el FIFO esta vacio (porque este estado no permite que el FIFO este lleno)
+                        estado_proximo = ERROR;
+                    end
+                    else begin
+                        estado_proximo = FIFO_VACIO;
+                    end
+                end
+            end
+
+            PAUSA: begin //-- Estado de en el que se avisa que el FIFO se esta llenando
+                almost_empty_full_c = 1;
+                estado_proximo = PAUSA;
+                if (wr_ptr > rd_ptr ) begin //-- Caso I de los punteros 
+                    if (wr_ptr - rd_ptr <= umbral_almost_empty) begin //-- Si el FIFO tiene menos datos que los permitidos por el umbral
+                        almost_empty_full_c = 0;
+                        estado_proximo = CONTINUAR;
+                    end
+                end
+                if (wr_ptr < rd_ptr ) begin //-- Caso II de los punteros 
+                    if (max_size_of_addr - (rd_ptr - wr_ptr) <= umbral_almost_empty) begin //-- Si el FIFO tiene menos datos que los permitidos por el umbral
+                        almost_empty_full_c = 0;
+                        estado_proximo = CONTINUAR;
+                    end                    
+                end
+                if (wr_ptr == rd_ptr ) begin //-- Caso III de los punteros 
+                    if (push == 1) begin //-- Si se hace un push y el FIFO esta lleno (porque este estado no permite que el FIFO este vacio)
+                        estado_proximo = ERROR;
+                    end
+                    else begin
+                        estado_proximo = PAUSA;
+                    end
+                end
+            end
+
+            ERROR: begin //-- ERror si se hace un push con el FIFO lleno o un pop con el FIFO vacio
+                estado_proximo = ERROR;
+                error_c = 1;
+            end
+
+        endcase
+    end
 
 endmodule
 
@@ -51,16 +210,12 @@ output reg [DW-1: 0] data_out_c: Esta es la salida del FIFO que es valida cuando
 output reg valid_out_c:  Esta senal indica con un 1 cuando la salida es valida.  
 
 
-output reg almost_full_c: Esta senal es parte del FLOW CONTROL. SI esta senal se pone en 1 significa
+output reg almost_empty_full_c: Esta senal es parte del FLOW CONTROL. SI esta senal se pone en 1 significa
                           que el FIFO esta casi lleno, por lo que se debe hacer algo (logica fuera del FIFO),
                           ya sea en el round robin o en la logica que pide pops a los otros FIFOs. 
-                          Si esta senal es 0 no se hace nada.
+                          Si esta senal es 0 significa que el FIFO esta casi vacio por lo que se pueden hacer
+                          pops, a menos que le FIFO tenga la senal fifo_empty_c en 1, ya que estaria vacio
 
-output reg almost_empty_c: Esta senal es parte del FLOW CONTROL. Si esta senal se encuentra en 1 significa
-                           que el round robin puede volver a pedir datos normalmente o que se permita nueva
-                           mente hacer pops al FIFO de arriba. Si es 0 significa que el FIFO viene del estado
-                           almost_full_c y se esta vaciando. Cuando almost_empty_c se vuelva a levantar se debe
-                           poner almost_full_c en 0
 
 output reg fifo_empty_c: Esta senal es una entrada para la MAQUINA DE ESTADOS. Si el FIFO esta vacio se pone en 1
                          en otro caso es 0
