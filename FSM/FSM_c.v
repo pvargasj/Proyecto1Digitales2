@@ -1,5 +1,5 @@
 `include "CMOS_cells.v"
-module FSM (input clk,
+module FSM_c (input clk,
             input reset,
             input init, 
             input [7:0] UMF,     // [3:0] UMBRAL BAJO, [7:4] UMBRAL ALTO

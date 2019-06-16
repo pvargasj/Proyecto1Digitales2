@@ -11,7 +11,7 @@ module ProbadorFSM (output reg clk,                          //-- Reloj
 
 
  initial begin
-		$dumpfile("FMS.vcd");			// Nombre de archivo del "dump"
+		$dumpfile("Banco_Pruebas_FSM.vcd");			// Nombre de archivo del "dump"
 		$dumpvars;			            // Directiva para "dumpear" variables
 		
 		
