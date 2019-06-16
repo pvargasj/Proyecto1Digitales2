@@ -10,6 +10,8 @@ module fifo_c #(
     input [DW-1: 0] data_in,          //-- Entrada del FIFO de 6 bits
     input pop,                        //-- 1 si se quiere hacer pop, 0 nada
     input push,                       //-- 1 si se quiere hacer push, 0 nada
+    input [3:0] umbral_casi_lleno,    //-- Umbral de que el FIFO esta casi lleno
+    input [3:0] umbral_casi_vacio,    //-- Umbral de que el FIFO esta casi lleno
     output reg [DW-1: 0] data_out_c,  //-- Salida del FIFO
     output reg valid_out_c,           //-- es 1 cuando la salida del FIFO es un dato valido
     output reg almost_full_c,         //-- Parte del flow control, 1 para pedir una pausa, 0 no hace nada
