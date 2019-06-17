@@ -11,15 +11,21 @@ module Banco_Pruebas_FSM;
 wire [4:0]		FIFO_EMPTY;		// From probador of ProbadorFSM.v
 wire [4:0]		FIFO_ERROR;		// From probador of ProbadorFSM.v
 wire [7:0]		UD;			// From probador of ProbadorFSM.v
-wire [7:0]		UD_OUT;			// From maquina_estados_conductual of FSM_c.v, ...
+wire [7:0]		UD_OUT_c;		// From maquina_estados_conductual of FSM_c.v
+wire [7:0]		UD_OUT_e;		// From maquina_estados_estructural of FSM_e.v
 wire [7:0]		UMF;			// From probador of ProbadorFSM.v
-wire [7:0]		UMF_OUT;		// From maquina_estados_conductual of FSM_c.v, ...
+wire [7:0]		UMF_OUT_c;		// From maquina_estados_conductual of FSM_c.v
+wire [7:0]		UMF_OUT_e;		// From maquina_estados_estructural of FSM_e.v
 wire [7:0]		UVC;			// From probador of ProbadorFSM.v
-wire [7:0]		UVC_OUT;		// From maquina_estados_conductual of FSM_c.v, ...
-wire			active_out;		// From maquina_estados_conductual of FSM_c.v, ...
+wire [7:0]		UVC_OUT_c;		// From maquina_estados_conductual of FSM_c.v
+wire [7:0]		UVC_OUT_e;		// From maquina_estados_estructural of FSM_e.v
+wire			active_out_c;		// From maquina_estados_conductual of FSM_c.v
+wire			active_out_e;		// From maquina_estados_estructural of FSM_e.v
 wire			clk;			// From probador of ProbadorFSM.v
-wire			error_out;		// From maquina_estados_conductual of FSM_c.v, ...
-wire			idle_out;		// From maquina_estados_conductual of FSM_c.v, ...
+wire			error_out_c;		// From maquina_estados_conductual of FSM_c.v
+wire			error_out_e;		// From maquina_estados_estructural of FSM_e.v
+wire			idle_out_c;		// From maquina_estados_conductual of FSM_c.v
+wire			idle_out_e;		// From maquina_estados_estructural of FSM_e.v
 wire			init;			// From probador of ProbadorFSM.v
 wire			reset;			// From probador of ProbadorFSM.v
 // End of automatics
@@ -37,12 +43,12 @@ wire			reset;			// From probador of ProbadorFSM.v
 
     FSM_c    maquina_estados_conductual (/*AUTOINST*/
 					 // Outputs
-					 .error_out		(error_out),
-					 .active_out		(active_out),
-					 .idle_out		(idle_out),
-					 .UMF_OUT		(UMF_OUT[7:0]),
-					 .UVC_OUT		(UVC_OUT[7:0]),
-					 .UD_OUT		(UD_OUT[7:0]),
+					 .error_out_c		(error_out_c),
+					 .active_out_c		(active_out_c),
+					 .idle_out_c		(idle_out_c),
+					 .UMF_OUT_c		(UMF_OUT_c[7:0]),
+					 .UVC_OUT_c		(UVC_OUT_c[7:0]),
+					 .UD_OUT_c		(UD_OUT_c[7:0]),
 					 // Inputs
 					 .clk			(clk),
 					 .reset			(reset),
@@ -56,12 +62,12 @@ wire			reset;			// From probador of ProbadorFSM.v
             
    FSM_e    maquina_estados_estructural (/*AUTOINST*/
 					 // Outputs
-					 .UD_OUT		(UD_OUT[7:0]),
-					 .UMF_OUT		(UMF_OUT[7:0]),
-					 .UVC_OUT		(UVC_OUT[7:0]),
-					 .active_out		(active_out),
-					 .error_out		(error_out),
-					 .idle_out		(idle_out),
+					 .UD_OUT_e		(UD_OUT_e[7:0]),
+					 .UMF_OUT_e		(UMF_OUT_e[7:0]),
+					 .UVC_OUT_e		(UVC_OUT_e[7:0]),
+					 .active_out_e		(active_out_e),
+					 .error_out_e		(error_out_e),
+					 .idle_out_e		(idle_out_e),
 					 // Inputs
 					 .FIFO_EMPTY		(FIFO_EMPTY[4:0]),
 					 .FIFO_ERROR		(FIFO_ERROR[4:0]),

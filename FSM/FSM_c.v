@@ -7,12 +7,12 @@ module FSM_c (input clk,
             input [7:0] UD, 
             input [4:0] FIFO_ERROR,
             input [4:0] FIFO_EMPTY,
-            output reg error_out,
-            output reg active_out,
-            output reg idle_out,
-            output reg [7:0] UMF_OUT,  
-            output reg [7:0] UVC_OUT, 
-            output reg [7:0] UD_OUT);
+            output reg error_out_c,
+            output reg active_out_c,
+            output reg idle_out_c,
+            output reg [7:0] UMF_OUT_c,  
+            output reg [7:0] UVC_OUT_c, 
+            output reg [7:0] UD_OUT_c);
 
 //--SEÑALES INTERNAS:
     reg [4:0] estado;
@@ -42,9 +42,9 @@ module FSM_c (input clk,
         end
 
         if (estado == INIT) begin
-            UMF_OUT <= UMF;
-            UVC_OUT <= UVC;
-            UD_OUT  <= UD;
+            UMF_OUT_c <= UMF;
+            UVC_OUT_c <= UVC;
+            UD_OUT_c  <= UD;
         end
     end
 
@@ -53,9 +53,9 @@ module FSM_c (input clk,
 
     always @ (*) begin
         estado_proximo = estado;
-        idle_out = 0;
-        error_out = 0;
-        active_out = 0;
+        idle_out_c = 0;
+        error_out_c = 0;
+        active_out_c = 0;
         case (estado)
                 
             RESET: begin
@@ -71,7 +71,7 @@ module FSM_c (input clk,
 
             IDLE: begin
                 
-                idle_out = 1;
+                idle_out_c = 1;
 
                 if (FIFO_EMPTY != 0) begin
                     estado_proximo = ACTIVE;
@@ -80,7 +80,7 @@ module FSM_c (input clk,
             end
 
             ACTIVE: begin
-                active_out = 1;
+                active_out_c = 1;
                         
                 if (FIFO_ERROR != 0) begin
                     estado_proximo = ERROR;
@@ -92,7 +92,7 @@ module FSM_c (input clk,
             end
 
             ERROR: begin
-                error_out = 1;
+                error_out_c = 1;
                 if (!reset) begin
                     estado_proximo = RESET;
                 end    
