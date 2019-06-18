@@ -44,12 +44,10 @@ module probador #(
       end
       @(posedge clk);
       push <= 0;
-      data_in <= data_in - 1;
       // 1 READ
       repeat(1) begin
         @(posedge clk);
         pop <= 1; 
-        data_in <= data_in + 1;
       end
       @(posedge clk);
       pop <= 0;
@@ -67,12 +65,10 @@ module probador #(
       end
       @(posedge clk);
       push <= 0;
-      data_in <= data_in - 1;
       // 2 READ
       repeat(2) begin
         @(posedge clk);
         pop <= 1; 
-        data_in <= data_in + 1;
       end
       @(posedge clk);
       pop <= 0;

@@ -23,7 +23,7 @@ Nombre_archivo_lib_v := cmos.v
 ################################################## COMANDOS DE CONSOLA USUARIO  ############################################################
 ############################################################################################################################################
 
-all: generar_archivo_yosys ejecutar_yosys build run gtk clean
+all: generar_archivo_yosys ejecutar_yosys emacs build run gtk clean
 
 build:
 	iverilog -o $(NAME_BANCO_PRUEBAS).o -Ttyp $(NAME_BANCO_PRUEBAS).v

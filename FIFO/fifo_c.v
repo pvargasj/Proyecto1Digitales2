@@ -62,17 +62,21 @@ module fifo_c #(
         end
     end
 
-    RAM_c RAM_c_instance0 (
-               // Inputs
-               .rw			(push),
+    RAM_c #(/*AUTOINSTPARAM*/
+	    // Parameters
+	    .AW				(AW),
+	    .DW				(DW))
+        RAM_c_instance0 (
+             // Inputs
+             .rw			(push),
 			   /*AUTOINST*/
-			   // Outputs
-			   .data_out_c		(data_out_c[DW-1:0]),
-			   // Inputs
-			   .clk			(clk),
-			   .reset		(reset),
-			   .addr		(addr[AW-1:0]),
-			   .data_in		(data_in[DW-1:0]));
+			 // Outputs
+			 .data_out_c		(data_out_c[DW-1:0]),
+			 // Inputs
+			 .clk			(clk),
+			 .reset			(reset),
+			 .addr			(addr[AW-1:0]),
+			 .data_in		(data_in[DW-1:0]));
 
 
     //------------------------- LOGICA DE FLOW CONTROL---------------------------------
@@ -82,7 +86,7 @@ module fifo_c #(
     reg [4:0] estado_proximo;
 
     //--ESTADOS:
-    parameter [4:0] RESET = 5'b00001, 
+    localparam [4:0] RESET = 5'b00001, 
                     FIFO_VACIO = 5'b00010, 
                     CONTINUAR = 5'b00100, 
                     PAUSA = 5'b01000, 

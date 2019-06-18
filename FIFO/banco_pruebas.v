@@ -30,7 +30,11 @@ wire			valid_out_c;		// From fifo_c_instance of fifo_c.v
 wire			valid_out_e;		// From fifo_e_instance of fifo_e.v
 // End of automatics
  	   
-fifo_c  fifo_c_instance( /*AUTOINST*/
+fifo_c  #(/*AUTOINSTPARAM*/
+	  // Parameters
+	  .AW				(AW),
+	  .DW				(DW))
+	fifo_c_instance( /*AUTOINST*/
 			// Outputs
 			.data_out_c	(data_out_c[DW-1:0]),
 			.valid_out_c	(valid_out_c),
@@ -62,25 +66,29 @@ fifo_e  fifo_e_instance( /*AUTOINST*/
 			.umbral_almost_empty(umbral_almost_empty[3:0]),
 			.umbral_almost_full(umbral_almost_full[3:0]));
  	   
-probador  probador_inst( /*AUTOINST*/
-			// Outputs
-			.clk		(clk),
-			.reset		(reset),
-			.data_in	(data_in[DW-1:0]),
-			.pop		(pop),
-			.push		(push),
-			.umbral_almost_full(umbral_almost_full[3:0]),
-			.umbral_almost_empty(umbral_almost_empty[3:0]),
-			// Inputs
-			.data_out_c	(data_out_c[DW-1:0]),
-			.valid_out_c	(valid_out_c),
-			.almost_empty_full_c(almost_empty_full_c),
-			.fifo_empty_c	(fifo_empty_c),
-			.error_c	(error_c),
-			.data_out_e	(data_out_e[DW-1:0]),
-			.valid_out_e	(valid_out_e),
-			.almost_empty_full_e(almost_empty_full_e),
-			.fifo_empty_e	(fifo_empty_e),
-			.error_e	(error_e));
+probador #(/*AUTOINSTPARAM*/
+	   // Parameters
+	   .AW				(AW),
+	   .DW				(DW))
+  		probador_inst( /*AUTOINST*/
+			      // Outputs
+			      .clk		(clk),
+			      .reset		(reset),
+			      .data_in		(data_in[DW-1:0]),
+			      .pop		(pop),
+			      .push		(push),
+			      .umbral_almost_full(umbral_almost_full[3:0]),
+			      .umbral_almost_empty(umbral_almost_empty[3:0]),
+			      // Inputs
+			      .data_out_c	(data_out_c[DW-1:0]),
+			      .valid_out_c	(valid_out_c),
+			      .almost_empty_full_c(almost_empty_full_c),
+			      .fifo_empty_c	(fifo_empty_c),
+			      .error_c		(error_c),
+			      .data_out_e	(data_out_e[DW-1:0]),
+			      .valid_out_e	(valid_out_e),
+			      .almost_empty_full_e(almost_empty_full_e),
+			      .fifo_empty_e	(fifo_empty_e),
+			      .error_e		(error_e));
  	   
 endmodule
