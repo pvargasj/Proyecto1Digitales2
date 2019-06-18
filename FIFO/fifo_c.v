@@ -178,6 +178,10 @@ module fifo_c #(
             ERROR: begin //-- ERror si se hace un push con el FIFO lleno o un pop con el FIFO vacio
                 estado_proximo = ERROR;
                 error_c = 1;
+                if (reset == 0) begin
+                    estado_proximo = RESET;
+                    error_c = 0;
+                end
             end
 
         endcase

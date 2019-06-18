@@ -103,17 +103,22 @@ module probador #(
       @(posedge clk);
       pop <= 0;
       @(posedge clk);
-    /* @(posedge clk);
-      pop <= 1;
+ 
       @(posedge clk);
-      pop <= 1;
-      @(posedge clk);
+      reset <= 0;
       pop <= 0;
+      push <= 0;
       @(posedge clk);
-      pop <= 1;*/
+      @(posedge clk);
+      reset <= 1;  
+      repeat(9) begin
+        @(posedge clk);
+        push <= 1; 
+        data_in <= data_in + 1;
+      end
       @(posedge clk);
       @(posedge clk);
-
+      @(posedge clk);
 		$finish;
 	end
 	
