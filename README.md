@@ -7,11 +7,7 @@
 
 
 ## Bitácora
-### Avance 1: 19 de junio, 17:00
-Para este avance se decidió que Luis Soto iba a trabajar más módulos ya que se ofreció porque tenía
-más tiempo libre que los demás integrantes del grupo. Pero lo establecido es que en el recuento final
-del proyecto todos tengamos una participación equivalente.
-
+### Avance 1: 19 de junio, 17:0
 Las reuniones que realizamos son principalmente virtuales por medio de un grupo de whatsapp, en ellas
 discutimos los módulos realizados por los compañeros para que en un futuro no existan problemas de conexión
 y también se discute la sintaxis a utilizar en los módulos conductuales y estructurales con el fin de utilizar 
@@ -19,20 +15,18 @@ de manera correcta autoinst
 
 A continuacón se pesentan las tareas que realizó cada estudiante para este avance
 
-Luis Soto: Módulos del clk_gen, Mux, Demux y Revisión de módulos de los compañeros. 
-El trabajo de este integrante fue realizado entre los días 12 y 15 del mes de Mayo
+Luis Soto: Bitácora y Revisión de módulos de los compañeros. 
+El trabajo de este integrante fue realizado entre los días 18 y 19 del mes de Mayo
 
-Pablo Vargas: Módulo de Paralelo a serial y revisión de módulos de los compañeros
-El trabajo de este integrante fue realizado entre los días 12 y 15 del mes de Mayo
+Pablo Vargas: Módulo de máquina de estados revisión de módulos de los compañeros
+El trabajo de este integrante fue realizado entre los días 13 y 16 del mes de Mayo
 
-Yeison Rodríguez: Bitácora, plan de trabajo y revisión de módulos de los compañeros
-El trabajo de este integrante fue realizado entre los días 12 y 15 del mes de Mayo
+Yeison Rodríguez: Bitácora, plan de trabajo y revisión de módulos RAM y FIFO.
+El trabajo de este integrante fue realizado entre los días 14 y 17 del mes de Mayo
 
 
 
 Los problemas que se tuvieron fueron los siguientes:
-1. Problemas de discusión del diseño del generador de relojes, ya que no sabíamos si los relojes debían compartir todos un ciclo de reloj positivo al menos en algún punto.
-2. Algunos bugs en el paralelo serial y mux que fueron reparados
 
 
 
