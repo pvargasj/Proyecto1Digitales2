@@ -29,14 +29,16 @@ module fifo_c #(
 
     //--SEÑALES INTERNAS:
     reg [AW-1: 0] wr_ptr, rd_ptr;           //-- Punteros de escritura y lectura
-    reg [AW-1: 0] addr;
-    wire rw;        //-- 0 read 1 write
+
+    reg [1:0] rw; //-- 00 idle, 01 write, 10 read, 11 read and write
+
 
     //--------------- LOGICA DE POP Y PUSH DEL FIFO--------------------
     always @(posedge clk) begin
         if (reset == 0) begin
             wr_ptr <= 0;
             rd_ptr <= 0;
+            valid_out_c <= 0;
         end
         if (reset == 1) begin
             //-- caso push
@@ -46,21 +48,19 @@ module fifo_c #(
             //-- caso pop
             if (pop == 1) begin
                 rd_ptr <= rd_ptr + 1; //-- si hay un pop aumenta el puntero de lectura
+                valid_out_c <= 1;
+            end
+            if (pop == 0 || fifo_empty_c == 1) begin
+                valid_out_c <= 0;
             end
         end
     end
-   
+
     always @(*) begin
-        addr = 0;
-        valid_out_c = 0;
-        if (push == 1) begin    //-- Si se solicita push, pone el addr en escritura 
-            addr = wr_ptr;
-        end
-        if (pop == 1) begin     //-- Si se solicita push, pone el addr en lectura y activa valid out
-            addr = rd_ptr; 
-            valid_out_c = 1;
-        end
+        rw[0] = push;
+        rw[1] = pop;
     end
+
 
     RAM_c #(/*AUTOINSTPARAM*/
 	    // Parameters
@@ -68,14 +68,15 @@ module fifo_c #(
 	    .DW				(DW))
         RAM_c_instance0 (
              // Inputs
-             .rw			(push),
+			 .addrr			(rd_ptr[AW-1:0]),
+			 .addrw			(wr_ptr[AW-1:0]),
 			   /*AUTOINST*/
 			 // Outputs
 			 .data_out_c		(data_out_c[DW-1:0]),
 			 // Inputs
 			 .clk			(clk),
 			 .reset			(reset),
-			 .addr			(addr[AW-1:0]),
+             .rw			(rw), 
 			 .data_in		(data_in[DW-1:0]));
 
 

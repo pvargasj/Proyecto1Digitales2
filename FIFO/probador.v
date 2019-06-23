@@ -32,10 +32,12 @@ module probador #(
         umbral_almost_full = 7;
         umbral_almost_empty = 3;
 		@(posedge clk);
+		@(posedge clk);
+
       reset <= 1;
       pop <= 0;
       push <= 0;
-
+      @(posedge clk);
       // 3 WRITE
       repeat(3) begin
         @(posedge clk);
@@ -118,7 +120,38 @@ module probador #(
       end
       @(posedge clk);
       @(posedge clk);
+
       @(posedge clk);
+      reset <= 0;
+      pop <= 0;
+      push <= 0;
+
+    @(posedge clk);
+
+    @(posedge clk);
+      reset <= 1;
+    @(posedge clk);
+      push <= 1; 
+      data_in <= data_in + 1;
+      repeat(4) begin
+        @(posedge clk);
+        push <= 1;
+        pop <= 1; 
+        data_in <= data_in + 1;
+      end
+        @(posedge clk);
+        data_in <= data_in + 1;
+        pop <= 0; 
+        @(posedge clk);
+        push <= 0;
+        @(posedge clk);
+      repeat(4) begin
+        @(posedge clk);
+        push <= 1;
+        pop <= 1; 
+        data_in <= data_in + 1;
+      end
+        @(posedge clk);
 		$finish;
 	end
 	

@@ -24,6 +24,7 @@ module RAM_c #(
     integer i;
     always @(posedge clk) begin
         if (reset == 0) begin           //-- Inicializando en 0 la RAM
+            data_out_c <= 'b0;  
             for (i = 0;i < cantidad_datos;i = i + 1) begin
                 ram_memory[i] <= 'b0;   
             end
