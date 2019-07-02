@@ -20,7 +20,7 @@ module fifo_c #(
     output reg valid_out_c,           //-- es 1 cuando la salida del FIFO es un dato valido 
     output reg almost_empty_full_c,   //-- 0 si esta casi vacio (aun le cabe), 1 si esta casi lleno (casi no le cabe)
     output reg fifo_empty_c,          //-- Entrada de la maquina de estados, Es 1 si el FIFO esta vacio, 0 en caso contrario
-    output reg error_c                //--Entrada de la maquina de estados, Es 1 solo si se pide hacer un push y el fifo estaba lleno o si se pide pop y el FIFO estaba vacio
+    output reg error_c                //-- Entrada de la maquina de estados, Es 1 solo si se pide hacer un push y el fifo estaba lleno o si se pide pop y el FIFO estaba vacio
     );
 
 
@@ -46,7 +46,7 @@ module fifo_c #(
                 wr_ptr <= wr_ptr + 1; //-- si hay un push aumenta el puntero de escritura
             end
             //-- caso pop
-            if (pop == 1) begin
+            if (pop == 1 & fifo_empty_c != 1) begin
                 rd_ptr <= rd_ptr + 1; //-- si hay un pop aumenta el puntero de lectura
                 valid_out_c <= 1;
             end
@@ -118,9 +118,6 @@ module fifo_c #(
             FIFO_VACIO: begin //-- Estado que esta listo para recibir push pero no pops
                 estado_proximo = FIFO_VACIO;
                 fifo_empty_c = 1;
-                if (pop == 1) begin
-                    estado_proximo = ERROR;
-                end
                 if (push == 1) begin
                     estado_proximo = CONTINUAR;
                 end
@@ -142,12 +139,7 @@ module fifo_c #(
                 end
                 if (wr_ptr == rd_ptr ) begin //-- Caso III de los punteros 
                     fifo_empty_c = 1;
-                    if (pop == 1) begin //-- Si se hace un pop y el FIFO esta vacio (porque este estado no permite que el FIFO este lleno)
-                        estado_proximo = ERROR;
-                    end
-                    else begin
                         estado_proximo = FIFO_VACIO;
-                    end
                 end
             end
 
