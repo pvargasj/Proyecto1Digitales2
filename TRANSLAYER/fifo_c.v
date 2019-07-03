@@ -118,6 +118,9 @@ module fifo_c #(
             FIFO_VACIO: begin //-- Estado que esta listo para recibir push pero no pops
                 estado_proximo = FIFO_VACIO;
                 fifo_empty_c = 1;
+                if (wr_ptr != rd_ptr) begin
+                    fifo_empty_c = 0;
+                end
                 if (push == 1) begin
                     estado_proximo = CONTINUAR;
                 end
