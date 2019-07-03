@@ -40,50 +40,117 @@ module probador (
 				  init <= 1;             
 			  @(posedge clk);
           init <= 0;
+
+
+
         @(posedge clk);
+          data_in <= 'b000000;
+          push_main <= 1;        
+ 
+
         @(posedge clk);
-          data_in <= 'b100111;
-          push_main <= 1;
-          pop_d0 <= 1;
-          pop_d1 <= 1;
+          data_in <= 'b010001;
+          push_main <= 1;    
+
+
         @(posedge clk);
-          data_in <= 'b100110;
+          data_in <= 'b100010;
+          push_main <= 1;    
+
+
         @(posedge clk);
-          data_in <= 'b110101;
+          data_in <= 'b110011;
+          push_main <= 1;           
+
+
         @(posedge clk);
-          data_in <= 'b011000;
-        @(posedge clk);
-          data_in <= 'b001001;
-        @(posedge clk);
-          data_in <= 'b111001;
-        @(posedge clk);
-          data_in <= 'b101000;
-        @(posedge clk);
-          data_in <= 'b100111;
-        @(posedge clk);
-          data_in <= 'b100110;
+          data_in <= 'b000100;
+          push_main <= 1;    
+
+
+
         @(posedge clk);
           data_in <= 'b010101;
-        @(posedge clk);
-          data_in <= data_in + 1;
-        @(posedge clk);
-          data_in <= data_in + 1;
-        @(posedge clk);
-          data_in <= data_in + 1;
-        @(posedge clk);
-          push_main <= 0;
-        @(posedge clk);
-        @(posedge clk);
-        @(posedge clk);
-        @(posedge clk);
-        @(posedge clk);
-        @(posedge clk);
-        @(posedge clk);
-        @(posedge clk);
-        @(posedge clk);
-        @(posedge clk);
-        @(posedge clk);
+          push_main <= 1;    
 
+
+
+        @(posedge clk);
+          data_in <= 'b100110;
+          push_main <= 1;    
+
+
+
+        @(posedge clk);
+          data_in <= 'b110111;
+          push_main <= 1;    
+  
+
+
+        @(posedge clk);
+          data_in <= 'b001001;
+          push_main <= 1;    
+
+        @(posedge clk);
+          data_in <= 'b011010;
+          push_main <= 1;  
+
+        @(posedge clk);
+          data_in <= 'b101011;
+          push_main <= 1;  
+
+        @(posedge clk);
+          data_in <= 'b111100;
+          push_main <= 1;  
+
+        @(posedge clk);
+          data_in <= 'b001101;
+          push_main <= 1;  
+
+        @(posedge clk);
+          data_in <= 'b011110;
+          push_main <= 1;  
+
+
+        @(posedge clk);
+          data_in <= 'b101111;
+          push_main <= 1;  
+
+        @(posedge clk);
+          data_in <= 'b110000;
+          push_main <= 1;  
+
+        @(posedge clk);
+          pop_d0 <= 1;
+          push_main <= 0; 
+          pop_d1 <= 1;
+          data_in <= 'b000000;
+        @(posedge clk);
+       
+        @(posedge clk);
+        @(posedge clk);
+        @(posedge clk);
+        @(posedge clk);
+        @(posedge clk);
+        @(posedge clk);
+        @(posedge clk);
+        @(posedge clk);
+        @(posedge clk);
+        @(posedge clk);
+        @(posedge clk);
+        @(posedge clk);
+        @(posedge clk);
+        @(posedge clk);
+        @(posedge clk);
+        @(posedge clk);
+        @(posedge clk);
+        @(posedge clk);
+        @(posedge clk);
+        @(posedge clk);
+        @(posedge clk);
+        @(posedge clk);
+        @(posedge clk);
+        @(posedge clk);
 		$finish;
 	end
 

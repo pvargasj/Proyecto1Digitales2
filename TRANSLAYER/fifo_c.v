@@ -32,23 +32,26 @@ module fifo_c #(
 
     reg [1:0] rw; //-- 00 idle, 01 write, 10 read, 11 read and write
 
-
+    reg contador_datos_en_FIFO;
     //--------------- LOGICA DE POP Y PUSH DEL FIFO--------------------
     always @(posedge clk) begin
         if (reset == 0) begin
             wr_ptr <= 0;
             rd_ptr <= 0;
             valid_out_c <= 0;
+            contador_datos_en_FIFO <= 0;
         end
         if (reset == 1) begin
             //-- caso push
             if (push == 1) begin
                 wr_ptr <= wr_ptr + 1; //-- si hay un push aumenta el puntero de escritura
+                contador_datos_en_FIFO <= contador_datos_en_FIFO + 1;
             end
             //-- caso pop
             if (pop == 1 & fifo_empty_c != 1) begin
                 rd_ptr <= rd_ptr + 1; //-- si hay un pop aumenta el puntero de lectura
                 valid_out_c <= 1;
+                contador_datos_en_FIFO <= contador_datos_en_FIFO - 1;
             end
             if (pop == 0 || fifo_empty_c == 1) begin
                 valid_out_c <= 0;
@@ -161,13 +164,18 @@ module fifo_c #(
                         estado_proximo = CONTINUAR;
                     end                    
                 end
-                if (wr_ptr == rd_ptr ) begin //-- Caso III de los punteros 
+                if (wr_ptr == rd_ptr & contador_datos_en_FIFO != 0) begin //-- Caso III de los punteros 
                     if (push == 1) begin //-- Si se hace un push y el FIFO esta lleno (porque este estado no permite que el FIFO este vacio)
                         estado_proximo = ERROR;
                     end
                     else begin
                         estado_proximo = PAUSA;
                     end
+                end
+                if (wr_ptr == rd_ptr & contador_datos_en_FIFO == 0) begin //-- Caso III de los punteros 
+                        fifo_empty_c = 1;
+                        almost_empty_full_c = 0;
+                        estado_proximo = FIFO_VACIO;
                 end
             end
 
