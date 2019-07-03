@@ -42,8 +42,8 @@ module probador (
           init <= 0;
 
 
-
-        @(posedge clk);
+      repeat (1) begin 
+@(posedge clk);
           data_in <= 'b000000;
           push_main <= 1;        
  
@@ -115,10 +115,9 @@ module probador (
         @(posedge clk);
           data_in <= 'b101111;
           push_main <= 1;  
+       
 
-        @(posedge clk);
-          data_in <= 'b110000;
-          push_main <= 1;  
+      end
 
         @(posedge clk);
           pop_d0 <= 1;
@@ -126,7 +125,7 @@ module probador (
           pop_d1 <= 1;
           data_in <= 'b000000;
         @(posedge clk);
-       
+
         @(posedge clk);
         @(posedge clk);
         @(posedge clk);
