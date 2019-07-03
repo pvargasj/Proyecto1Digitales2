@@ -10,11 +10,22 @@ module probador (
     output reg pop_d0,
     output reg pop_d1,
     
+    //Entradas de cond
     input error_out_c,
     input active_out_c,
     input idle_out_c,
     input [5:0] data_out_0_c,      //-- Salida del fifo D0 
-    input [5:0] data_out_1_c);
+    input [5:0] data_out_1_c,
+    input valid_out_0_c, 
+    input valid_out_1_c,
+    //Entradas de estr
+    input error_out_e,
+    input active_out_e,
+    input idle_out_e,
+    input [5:0] data_out_0_e,      //-- Salida del fifo D0 
+    input [5:0] data_out_1_e,
+    input valid_out_0_e, 
+    input valid_out_1_e);
 
 	initial begin
 		$dumpfile("TRANSLAYER.vcd");

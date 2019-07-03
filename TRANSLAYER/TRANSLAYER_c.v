@@ -24,7 +24,9 @@ module TRANSLAYER_c (
     output active_out_c,
     output idle_out_c,
     output [5:0] data_out_0_c,      //-- Salida del fifo D0 
-    output [5:0] data_out_1_c);
+    output [5:0] data_out_1_c,
+    output valid_out_0_c, 
+    output valid_out_1_c);
 
     parameter AWMD = 2;                         //Parametros
     parameter AWVC = 4;
