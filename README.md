@@ -48,7 +48,7 @@ Pablo Vargas:  Revisión de módulo FIFO.
 El trabajo de este integrante fue realizado entre los días 24 y 26 del mes de junio
 
 Yeison Rodríguez: Bitácora y creación de módulo FIFO.
-El trabajo de este integrante fue realizado entre los días 26 y 26 del mes de junio
+El trabajo de este integrante fue realizado entre los días 24 y 26 del mes de junio
 
 Los problemas que se tuvieron fueron los siguientes:
 
